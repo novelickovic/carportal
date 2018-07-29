@@ -9,7 +9,7 @@
     <meta name="author" content="Pike Web Development - https://www.pikephp.com">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap , Font Awesome , Custom css -->
     <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css" />
@@ -32,33 +32,33 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="{{route('admin')}}" class="logo"><img alt="Logo" src="img/logo.png" /> <span>Admin</span></a>
+            <a href="admin" class="logo"><img alt="Logo" src="/img/logo.png" /> <span>Admin</span></a>
         </div>
 
         <nav class="navbar-custom">
 
             <ul class="list-inline float-right mb-0">
-
-
+                <DIV class="list-inline-item text-white"><h5>Hello, {{Auth::user()->name}}</h5></DIV>
                 <li class="list-inline-item dropdown notif">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="img/avatars/admin.png" alt="Profile image" class="avatar-rounded">
+                        <img src="{{Auth::user()->photo->name}}" alt="Profile image" class="avatar-rounded">
                     </a>
+
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
-                        <!-- item-->
-                        <div class="dropdown-item noti-title">
-                            <h5 class="text-overflow"><small>Hello, admin</small> </h5>
-                        </div>
 
                         <!-- item-->
-                        <a href="pro-profile.html" class="dropdown-item notify-item">
+                        <a href="{{route('users.edit',Auth::user()->id)}}" class="dropdown-item notify-item">
                             <i class="fa fa-user"></i> <span>Profile</span>
                         </a>
 
                         <!-- item-->
-                        <a href="#" class="dropdown-item notify-item">
+                        <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
                             <i class="fa fa-power-off"></i> <span>Logout</span>
                         </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
 
                     </div>
                 </li>
@@ -93,11 +93,8 @@
                     </li>
 
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-users"></i> <span> Users </span> <span class="menu-arrow"></span></a>
-                        <ul class="list-unstyled">
-                            <li><a href="tables-basic.html">All Users</a></li>
-                            <li><a href="tables-datatable.html">Add User</a></li>
-                        </ul>
+                        <a href="{{route('users.index')}}"><i class="fa fa-fw fa-users"></i> <span> Users </span> </a>
+
                     </li>
 
                 </ul>
@@ -133,10 +130,11 @@
                     </div>
                 </div>
                 <!-- end row -->
+
                 @yield('content')
 
             </div>
-        <!-- END container-fluid -->
+            <!-- END container-fluid -->
 
         </div>
         <!-- END content -->
