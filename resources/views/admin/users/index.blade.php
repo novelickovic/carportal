@@ -129,7 +129,7 @@
                         </tbody>
                     </table>
 
-
+                    <div class="justify-content-center">{{ $users->links() }}</div>
 
                 </div>
             </div>
