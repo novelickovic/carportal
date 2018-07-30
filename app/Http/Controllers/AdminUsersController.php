@@ -109,9 +109,11 @@ class AdminUsersController extends Controller
 
         if ($file = $request->file('photo_id')){
 
-            // Delete old image
-            $old_image_name = $user->photo->name;
-            unlink(public_path(). $old_image_name);
+            // Check and delete old image
+            if ($user->photo) {
+                $old_image_name = $user->photo->name;
+                unlink(public_path() . $old_image_name);
+            }
 
             // set new image
             $name = time(). $file->getClientOriginalName();
