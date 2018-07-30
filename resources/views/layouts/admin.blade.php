@@ -41,7 +41,14 @@
                 <DIV class="list-inline-item text-white"><h5>Hello, {{Auth::user()->name}}</h5></DIV>
                 <li class="list-inline-item dropdown notif">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
-                        <img src="{{Auth::user()->photo->name}}" alt="Profile image" class="avatar-rounded">
+
+                        @if(Auth::user()->photo)
+
+                            <img src="{{Auth::user()->photo->name}}" alt="Profile image" class="avatar-rounded">
+                            @else
+
+                            <img src="/img/avatars/admin.jpg" alt="Profile image" class="avatar-rounded">
+                        @endif
                     </a>
 
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
@@ -94,6 +101,18 @@
 
                     <li class="submenu">
                         <a href="{{route('users.index')}}"><i class="fa fa-fw fa-users"></i> <span> Users </span> </a>
+
+                    </li>
+                    <li class="submenu">
+                        <a href="{{route('categories.index')}}"><i class="fa fa-fw fa-list-alt"></i> <span> Categories </span> </a>
+
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-sticky-note"></i> <span> Posts </span> </a>
+
+                    </li>
+                    <li class="submenu">
+                        <a href="#"><i class="fa fa-fw fa-image"></i> <span> Media </span> </a>
 
                     </li>
 

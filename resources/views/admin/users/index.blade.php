@@ -100,7 +100,7 @@
                             @foreach($users as $user)
                                 <tr>
                                     <td>{{$user->id}}</td>
-                                    <td><img src="{{$user->photo? $user->photo->name : 'http://via.placeholder.com/100x100'}}" class="rounded-circle" width="50" alt="{!! $user->name !!}"></td>
+                                    <td><img src="{{$user->photo? $user->photo->name : 'http://via.placeholder.com/100x100'}}" class="rounded-circle" height="50" alt="{!! $user->name !!}"></td>
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role->name}}</td>
