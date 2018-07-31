@@ -108,7 +108,7 @@
 
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-sticky-note"></i> <span> Posts </span> </a>
+                        <a href="{{route('posts.index')}}"><i class="fa fa-fw fa-file-text-o"></i> <span> Posts </span> </a>
 
                     </li>
                     <li class="submenu">
@@ -136,19 +136,7 @@
 
             <div class="container-fluid">
 
-                <div class="row">
-                    <div class="col-xl-12">
-                        <div class="breadcrumb-holder">
-                            <h1 class="main-title float-left">Dashboard</h1>
-                            <ol class="breadcrumb float-right">
-                                <li class="breadcrumb-item">Home</li>
-                                <li class="breadcrumb-item active">Dashboard</li>
-                            </ol>
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-                <!-- end row -->
+
 
                 @yield('content')
 

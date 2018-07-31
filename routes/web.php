@@ -31,4 +31,6 @@ Route::group(['middleware'=>'admin'], function (){
 
     Route::resource('admin/categories', 'AdminCategoriesController', ['except' =>['create', 'show']]);
 
+    Route::resource('admin/posts', 'AdminPostsController');
+
 });

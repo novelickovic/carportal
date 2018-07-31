@@ -140,12 +140,13 @@ class AdminUsersController extends Controller
 
         $user = User::findOrFail($id);
 
-        if ($user->id = Auth::user()->id) {
+        if ($user->id == Auth::user()->id) {
             return redirect('/admin/users')->with('message_error', 'You can not delete youself!');
         }
         if ($user->photo_id) {
 
             unlink(public_path(). $user->photo->name);
+            Photo::findOrFail($user->photo_id)->delete();
 
         }
         $user->delete();
