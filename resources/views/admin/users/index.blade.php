@@ -84,6 +84,8 @@
                 </div>
                 <div class="card-footer">
                     <div class="form-group">
+                        {!! Form::hidden('created_by', Auth::user()->id) !!}
+
                         {!! Form::submit('Create user', ['class'=>'btn btn-primary pull-right']) !!}
                     </div>
 
@@ -116,7 +118,7 @@
                                     <td>{{$user->name}}</td>
                                     <td>{{$user->email}}</td>
                                     <td>{{$user->role->name}}</td>
-                                    <td>{!! Form::open(['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user]]) !!}
+                                    <td>{!! Form::open(['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user->id]]) !!}
                                         @if($user->is_active == 1)
                                             {!! Form::hidden('is_active', '0') !!}
                                             {!! Form::submit('active', ['class'=>'btn btn-success btn-sm']) !!}
@@ -134,6 +136,7 @@
                                             <a href="{{route('users.edit', $user->id)}}" class="btn btn-primary btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
 
                                             <button class="btn btn-danger btn-sm" value="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+
                                         {!! Form::close() !!}
                                     </td>
                                 </tr>

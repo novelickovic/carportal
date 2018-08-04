@@ -1,5 +1,10 @@
 @extends('layouts.admin')
 
+@section('custom_css')
+
+    <link href="{{asset('css/admin.css')}}" rel="stylesheet" type="text/css" />
+@endsection
+
 @section('content')
 
     <div class="row">
@@ -30,7 +35,16 @@
                 <!-- end card-header -->
 
                 <div class="card-body">
-
+                    {{--Displaying errors--}}
+                    @if(count($errors)>0)
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach($errors->all() as $error)
+                                    <li>{{$error}}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
 
                     <div class="row">
 
@@ -40,7 +54,7 @@
 
                                 <div class="card-body">
 
-                                    {!! Form::open(['method'=>'POST', 'action'=>['AdminPostsController@store', 'files'=>true]]) !!}
+                                    {!! Form::open(['method'=>'POST', 'action'=>'AdminPostsController@store', 'files'=>true]) !!}
                                         <div class="row">
 
                                             <div class="form-group col-xl-9 col-md-8 col-sm-12">
@@ -51,42 +65,38 @@
 
                                                 <div class="form-group">
                                                     {!! Form::label('body', 'Post body') !!}
-                                                    {!! Form::textarea('body', null, ['class'=>'form-control']) !!}
+                                                    {!! Form::textarea('body', null, ['class'=>'form-control editor']) !!}
                                                 </div>
 
                                                 <div class="form-group">
-                                                    {!! Form::label('image_id', 'Thumbnail image') !!}<br>
-                                                    {!! Form::file('image_id', null, ['class'=>'form-control']) !!}
+                                                    {!! Form::label('photo_id', 'Thumbnail image') !!}<br>
+                                                    {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
 
                                                 </div>
 
-                                                <div class="form-group">
-                                                    <button type="submit" class="btn btn-primary">Create post</button>
-                                                </div>
                                             </div>
 
                                             <div class="form-group col-xl-3 col-md-4 col-sm-12 border-left">
                                                 <div class="form-group">
-                                                    <label>Meta title</label>
-                                                    <input type="text" class="form-control" name="meta_title">
+                                                    {!! Form::label('meta_title', 'Meta title') !!}
+                                                    {!! Form::text('meta_title', null, ['class'=>'form-control']) !!}
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Meta description</label>
-                                                    <input type="text" class="form-control" name="meta_description">
+                                                    {!! Form::label('meta_description', 'Meta description') !!}
+                                                    {!! Form::text('meta_description', null, ['class'=>'form-control']) !!}
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Tags</label>
-                                                    <input type="text" class="form-control" name="keywords" id="tags" value="">
+                                                    {!! Form::label('tags', 'Tags') !!}
+                                                    {!! Form::text('tags', null, ['class'=>'form-control']) !!}
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label>Article status</label>
-                                                    <select name="status" class="form-control">
-                                                        <option value="active">Active (published)</option>
-                                                        <option value="inactive">Inactive</option>
-                                                    </select>
+                                                    <div class="form-group">
+                                                        {!! Form::label('status', 'Article status') !!}<br>
+                                                        {!! Form::select('status',['0'=>'Inactive', '1'=>'Active (Published)'], null, ['class'=>'form-control']) !!}
+                                                    </div>
                                                 </div>
 
                                                 <div class="form-group">
@@ -99,10 +109,18 @@
                                             </div>
 
                                         </div><!-- end row -->
-                                    {!! Form::close() !!}
+
 
                                 </div>
                                 <!-- end card-body -->
+
+                                <div class="card-footer">
+                                    <div class="form-group">
+                                        {!! Form::hidden('created_by', Auth::user()->id) !!}
+                                        {!! Form::submit('Create post', ['class'=>'btn btn-primary pull-right']) !!}
+                                        {!! Form::close() !!}
+                                    </div>
+                                </div>
 
                             </div>
                             <!-- end card -->
@@ -127,7 +145,53 @@
     </div>
     <!-- end row -->
 
-
-
-
 @endsection
+
+@section('scripts')
+    <script>
+        $(document).ready(function () {
+            'use strict';
+            $('.editor').trumbowyg();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function () {
+            'use strict';
+
+            // ------------------------------------------------------- //
+            // Text editor (WYSIWYG)
+            // ------------------------------------------------------ //
+            $('.editor').trumbowyg({
+                removeformatPasted: true,
+                autogrow: true,
+                btnsDef: {
+                    // Create a new dropdown
+                    image: {
+                        dropdown: ['insertImage', 'upload'],
+                        ico: 'insertImage'
+                    }
+                },
+
+                btns: [
+                    ['viewHTML'],
+                    ['undo', 'redo'],
+                    ['formatting'],
+                    'btnGrp-semantic',
+                    ['superscript', 'subscript'],
+                    ['link'],
+                    ['image'],
+                    'btnGrp-justify',
+                    'btnGrp-lists',
+                    ['horizontalRule'],
+                    ['removeformat'],
+                    ['fullscreen']
+                ],
+
+
+            });
+
+        });
+    </script>
+
+    @endsection

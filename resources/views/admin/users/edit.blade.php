@@ -47,7 +47,6 @@
                             </ul>
                         </div>
                     @endif
-
                     {!! Form::model($user, ['method'=>'PATCH', 'action'=>['AdminUsersController@update', $user->id], 'files'=>true]) !!}
 
                     <div class="form-group">
@@ -77,7 +76,7 @@
                 </div>
                 <div class="card-footer">
                     <div class="form-group">
-
+                        {!! Form::hidden('created_by', Auth::user()->id) !!}
                         {!! Form::submit('Edit user', ['class'=>'btn btn-primary pull-right']) !!}
                         <a href="{{route('users.index')}}" class="mr-2 btn btn-danger pull-right">Cancel</a>
                     </div>

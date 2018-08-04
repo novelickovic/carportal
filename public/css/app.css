@@ -4,6 +4,16 @@
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
+.post-image-position {
+  float: left;
+  margin-right: 10px;
+}
+
+.post-image-style {
+  max-width: 140px;
+  height: auto;
+}
+
 .clear {
   clear: both;
   margin-bottom: 20px;

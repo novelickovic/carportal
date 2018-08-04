@@ -54,7 +54,7 @@ class AdminUsersController extends Controller
 
             $file->move('images/', $name);
 
-            $photo = Photo::create(['name'=>$name]);
+            $photo = Photo::create(['name'=>$name, 'created_by'=>$request->created_by]);
 
             $input['photo_id']= $photo->id;
         }
@@ -107,6 +107,8 @@ class AdminUsersController extends Controller
 
         $input = $request->all();
 
+
+
         if ($file = $request->file('photo_id')){
 
             // Check and delete old image
@@ -118,7 +120,7 @@ class AdminUsersController extends Controller
             // set new image
             $name = time(). $file->getClientOriginalName();
             $file->move('images/', $name);
-            $photo = Photo::create(['name'=>$name]);
+            $photo = Photo::create(['name'=>$name, 'created_by'=>$input['created_by']]);
             $input['photo_id']= $photo->id;
         }
 

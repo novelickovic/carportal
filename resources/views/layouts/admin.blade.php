@@ -112,7 +112,7 @@
 
                     </li>
                     <li class="submenu">
-                        <a href="#"><i class="fa fa-fw fa-image"></i> <span> Media </span> </a>
+                        <a href="{{route('media.index')}}"><i class="fa fa-fw fa-image"></i> <span> Media </span> </a>
 
                     </li>
 

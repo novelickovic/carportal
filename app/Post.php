@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
+
 
 class Post extends Model
 {
@@ -13,10 +15,28 @@ class Post extends Model
         'user_id',
         'category_id',
         'photo_id',
-        'slug'
+        'slug',
+        'tags',
+        'status',
+        'meta_title',
+        'meta_description'
     ];
 
+    use Sluggable;
 
+    /**
+     * Return the sluggable configuration array for this model.
+     *
+     * @return array
+     */
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function user(){
 

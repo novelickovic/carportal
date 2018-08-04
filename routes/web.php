@@ -26,11 +26,23 @@ Route::group(['middleware'=>'admin'], function (){
 
     Route::get('/admin', function (){
         return view('admin.index');
-    });
+    })->name('admin.index');
     Route::resource('admin/users', 'AdminUsersController', ['except'=>['create', 'show']]);
 
     Route::resource('admin/categories', 'AdminCategoriesController', ['except' =>['create', 'show']]);
 
     Route::resource('admin/posts', 'AdminPostsController');
+
+    Route::resource('admin/media', 'AdminMediasController');
+
+});
+
+Route::group(['middleware'=>'author'], function(){
+
+    Route::resource('/author', 'AuthorController');
+
+    Route::get('/author/showprofile/{id}', 'AuthorController@showProfile')->name('author.showprofile');
+
+    Route::patch('/author/updateprofile/{id}', 'AuthorController@updateProfile')->name('author.updateprofile');
 
 });

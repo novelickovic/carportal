@@ -53,39 +53,57 @@
                 <div class="card-body">
 
 
-                    <table class="table table-bordered">
+                    <table class="table table-hover">
                         <thead>
                         <tr>
+                            <th>Thumbnail</th>
                             <th>Post details</th>
-                            <th width="160">Category</th>
-                            <th width="100">Actions</th>
+                            <th>Category</th>
+                            <th>Status</th>
+                            <th>Actions</th>
                         </tr>
                         </thead>
                         <tbody>
 
-                        <tr >
-                            <td>
-                                <span style="float: left; margin-right:10px;"><img style="max-width:140px; height:auto;" src="https://www.pikeadmin.com/demo-pro/uploads/small/8d14906a-blueprint-api-production.jpg" /></span>
-                                <h5>Duis scelerisque eros sit amet risus lobortis</h5>							Posted by <b>Pike Admin</b> at Nov 29 2017<br />
-                                <small>Duis scelerisque eros sit amet risus lobortis, quis interdum neque auctor. Nulla cursus maximus lacus at efficitur. In lobortis ante vitae nulla semper, in volutpat libero aliquet. Morbi sit amet nibh vitae metus interdum finibus sed nec nisl. Ut quam dolor, bibendum id maximus ut, suscipit consectetur sem. Vivamus non ex quis sem malesuada semper vel id dui. In lorem velit, volutpat ut velit non,...</small>
-                            </td>
 
-                            <td>Blog</td>
+                        @foreach($posts as $post)
+                            <tr>
+                                <td style="vertical-align: middle"><img class="post-image-style" src="{{$post->photo->name}}" /></td>
+                                <td>
 
-                            <td>
-                                <a href="account.php?page=pro-articles-edit&article_id=8" class="btn btn-primary btn-sm" data-placement="top" data-toggle="tooltip" data-title="Edit"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                                <a href="javascript:deleteRecord_8('8');" class="btn btn-danger btn-sm" data-placement="top" data-toggle="tooltip" data-title="Delete"><i class="fa fa-trash-o" aria-hidden="true"></i></a>
-                                <script language="javascript" type="text/javascript">
-                                    function deleteRecord_8(RecordId)
-                                    {
-                                        if (confirm('Confirm delete')) {
-                                            window.location.href = 'core/ArticleDelete.php?article_id=8&pagenum=1';
-                                        }
-                                    }
-                                </script>
-                            </td>
-                        </tr>
+                                    <h5>{{$post->title}}</h5>
+                                    Posted by <b>{{$post->user->name}}</b>, {{$post->updated_at->diffForHumans()}}<br />
 
+                                    <small>{!! str_limit(strip_tags($post->body), 100, ' &raquo &raquo &raquo') !!}</small>
+                                </td>
+
+                                <td>{{$post->category->name}}</td>
+
+                                <td>{!! Form::open(['method'=>'PATCH', 'action'=>['AdminPostsController@update', $post->id]]) !!}
+                                    @if($post->status == 1)
+                                        {!! Form::hidden('status', '0') !!}
+                                        {!! Form::submit('active', ['class'=>'btn btn-success btn-sm']) !!}
+                                    @else
+                                        {!! Form::hidden('status', '1') !!}
+                                        {!! Form::submit('inactive', ['class'=>'btn btn-danger btn-sm']) !!}
+
+                                    @endif
+
+                                    {!! Form::close() !!}</td>
+
+                                <td>
+                                    {!! Form::open(['class'=>'form-inline','method'=>'DELETE', 'action'=>['AdminPostsController@destroy', $post->id]]) !!}
+
+                                    {{--Preview link--}}
+                                    <a href="{{route('posts.show', $post->id)}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                                    {{--Edit link--}}
+                                    <a href="{{route('posts.edit', $post->id)}}" class="btn btn-primary btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+
+                                    <button class="btn btn-danger btn-sm" value="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                {!! Form::close() !!}
+                            </tr>
+                        @endforeach
 
 
                         </tbody>
