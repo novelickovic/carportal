@@ -55,9 +55,14 @@ class LoginController extends Controller
 
         if(Auth::user()->role->name =='administrator'){
             return redirect('/admin');
-        } else if (Auth::user()->role->name =='author') {
+        }
+        else if (Auth::user()->role->name =='author') {
             return redirect('/author');
-        }  else {
+        }
+        else if (Auth::user()->role->name == 'user') {
+            return redirect('/user');
+        }
+        else {
             return redirect('/home');
             }
         }

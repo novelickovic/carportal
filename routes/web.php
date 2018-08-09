@@ -46,3 +46,20 @@ Route::group(['middleware'=>'author'], function(){
     Route::patch('/author/updateprofile/{id}', 'AuthorController@updateProfile')->name('author.updateprofile');
 
 });
+
+
+
+
+
+    Route::get('/user', function(){
+        return view('user.index');
+    });
+
+    Route::resource('user/profile', 'UserProfilesController');
+
+    Route::resource('user/cars', 'UserCarsController');
+
+
+
+
+
