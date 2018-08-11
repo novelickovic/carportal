@@ -1,3 +1,7 @@
+@if($car->user_id!==Auth::user()->id)
+    <script>
+    window.location = "/user/cars";</script>
+    @endif
 @extends('layouts.user')
 
 @section('custom_css')
@@ -24,7 +28,7 @@
 
 
 
-    {!! Form::model($car, ['method'=>'POST', 'action'=>'UserCarsController@store','files'=>true]) !!}
+    {!! Form::model($car, ['method'=>'PATCH', 'action'=>['UserCarsController@update', $car->id]]) !!}
     <div class="row mb-3">
         <div class="col-sm-12">
 
@@ -250,54 +254,7 @@
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Photos</h3>
-                    Add pictures
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">Upload main image. This image will be shown in listing search
-                            <div class="pull-right">:</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="file" name="photo_id">
-                            </div>
 
-                        </div>
-
-                        <div class="col-sm-6">Upload other images
-                            <div class="pull-right">:</div>
-                        </div>
-
-                        <div class="col-sm-6">
-
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row mb-3">
         <div class="col-sm-12">
             <div class="card">
@@ -325,7 +282,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::submit('Edit car', ['class'=>'btn btn-primary btn-lg pull-right']) !!}
+                    <button class="btn btn-primary btn-lg pull-right" type="submit"><i class="fa fa-save"></i> Save changes</button>
                 </div>
             </div>
         </div>

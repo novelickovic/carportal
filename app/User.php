@@ -45,6 +45,9 @@ class User extends Authenticatable
             return true;
         }
     }
+    public function cars(){
+        return $this->hasMany('App\Car');
+    }
 
     public function isAuthor(){
 

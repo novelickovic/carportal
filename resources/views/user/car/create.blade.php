@@ -248,54 +248,7 @@
         </div>
     </div>
 
-    <div class="row mb-3">
-        <div class="col-sm-12">
-            <div class="card">
-                <div class="card-header">
-                    <h3>Photos</h3>
-                    Add pictures
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-sm-6">Upload main image. This image will be shown in listing search
-                            <div class="pull-right">:</div>
-                        </div>
-                        <div class="col-sm-6">
-                            <div class="form-group">
-                                <input type="file" name="photo_id">
-                            </div>
 
-                         </div>
-
-                        <div class="col-sm-6">Upload other images
-                            <div class="pull-right">:</div>
-                        </div>
-
-                        <div class="col-sm-6">
-
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-                            <div class="form-group">
-                                <input type="file" name="photo_all[]">
-                            </div>
-
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
     <div class="row mb-3">
         <div class="col-sm-12">
             <div class="card">
@@ -323,7 +276,7 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::submit('Publish now', ['class'=>'btn btn-primary btn-lg pull-right']) !!}
+                    {!! Form::submit('Save information and continue', ['class'=>'btn btn-primary btn-lg pull-right']) !!}
                 </div>
             </div>
         </div>

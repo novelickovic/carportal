@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Car;
 use App\Http\Requests\CreateCarsRequest;
 use App\Photo;
+use function Composer\Autoload\includeFile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -46,54 +47,36 @@ class UserCarsController extends Controller
         //
         $input = $request->all();
 
-
         if ($request->spec) {
-            count($request->spec) >= 2  ? $specification = implode(',', $request->spec): $specification = $request->spec;
-
+            count($request->spec) >= 1  ? $specification = implode(',', $request->spec): $specification = $request->spec;
             $input['specification']= $specification;
         }
 
         unset($input['spec']);
 
+        $car = Car::create($input);
 
-
-        if ($photo_all= $request->file('photo_all')) {
-
-            $photos = array();
-
-            foreach ($photo_all as $photo_item) {
-                $name_all = time(). $photo_item->getClientOriginalName();
-
-                $photo_item->move('images/', $name_all);
-
-
-                $photo = Photo::create(['name'=>$name_all, 'created_by'=>$input['user_id']]);
-                $photos[] = $photo->id;
-            }
-            $input['photo_all']= implode(',', $photos);
-        }
-
-
-        if ($file = $request->file('photo_id')) {
-            $name = time().$file->getClientOriginalName();
-            $file->move('images/', $name);
-
-
-            $photo = Photo::create(['name'=>$name, 'created_by'=>$input['user_id']]);
-            $input['photo_id'] = $photo->id;
-
-        }
-
-
-
-
-
-
-
-        Car::create($input);
-
-        return redirect('user/cars')->with('message', 'Well done! Car inserted succefully!');
+        $car_id = $car->id;
+        return view('user.car.createImages', compact('car_id'));
+        //return redirect('/user/cars/images', compact('car_id'))->with('message', 'Well done ! Car information inserted successfully!');
+        //return redirect('user/cars')->with('message', 'Well done! Car inserted succefully!');
     }
+
+    public function storeImages(Request $request){
+
+        $file = $request->file('file');
+
+        $name = time(). $file->getClientOriginalName();
+
+        $file->move('images/', $name);
+
+        $photo = Photo::create(['name'=>$name, 'created_by'=>$request->created_by, 'car_id'=>$request->car_id]);
+
+
+
+    }
+
+
 
     /**
      * Display the specified resource.
@@ -118,7 +101,6 @@ class UserCarsController extends Controller
 
         $car = Car::findOrFail($id);
 
-
         $spec = explode(',' ,$car->specification);
 
         return view('user.car.edit', compact('car', 'spec'));
@@ -134,6 +116,25 @@ class UserCarsController extends Controller
     public function update(Request $request, $id)
     {
         //
+
+    $car = Car::findOrFail($id);
+
+    $input = $request->all();
+
+    if ($request->spec) {
+        count($request->spec) >= 1  ? $specification = implode(',', $request->spec): $specification = $request->spec;
+        $input['specification']= $specification;
+    }
+
+    unset($input['spec']);
+
+    $car->update($input);
+
+    return redirect('user/cars')->with('message', 'Car information successfully updated');
+
+
+
+
     }
 
     /**
@@ -147,23 +148,12 @@ class UserCarsController extends Controller
         //
         $car = Car::findOrFail($id);
 
-        if ($photos = $car->photo_all) {
+        $photos = $car->photos;
 
-            $photos_array= explode(',', $photos);
-
-            foreach ($photos_array as $photos_to_delete) {
-                $photo = Photo::find($photos_to_delete);
-                if (file_exists(public_path(). $photo->name)) unlink(public_path(). $photo->name);
-                $photo->delete();
-            }
-        }
-
-        if ($car->photo_id) {
-
-            $photo = Photo::find($car->photo_id);
+        foreach ($photos as $photo) {
+            $photo_to_delete = Photo::find($photo->id);
             if (file_exists(public_path(). $photo->name)) unlink(public_path(). $photo->name);
-            $photo->delete();
-
+            $photo_to_delete->delete();
         }
 
         $car->delete();
@@ -172,4 +162,15 @@ class UserCarsController extends Controller
 
 
     }
+
+    public function customDelete($id){
+
+        $photo_to_delete = Photo::findOrFail($id);
+        if (file_exists(public_path().$photo_to_delete->name)) unlink(public_path(). $photo_to_delete->name);
+        $photo_to_delete->delete();
+
+        return back();
+
+    }
+
 }

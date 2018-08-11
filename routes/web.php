@@ -59,6 +59,19 @@ Route::group(['middleware'=>'author'], function(){
 
     Route::resource('user/cars', 'UserCarsController');
 
+    //Route::resource('user/images', 'CarImagesController');
+
+    Route::post('user/car/images', 'UserCarsController@storeImages');
+
+    Route::get('user/car/edit/images/{car_id}', function ($car_id){
+        $car = App\Car::findOrFail($car_id);
+        $photos = $car->photos;
+        return view ('user.car.editImages', compact('car' ));
+    })->name('cars.edit.images');
+
+    Route::delete('user/car/edit/images/{id}', 'UserCarsController@customDelete');
+
+
 
 
 

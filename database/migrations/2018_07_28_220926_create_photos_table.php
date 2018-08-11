@@ -17,6 +17,7 @@ class CreatePhotosTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->integer('created_by');
+            $table->integer('car_id')->nullable();
             $table->timestamps();
 
 

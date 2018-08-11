@@ -96,7 +96,7 @@
                         {!! Form::select('is_active',[ 0=>'Inactive',1 =>'Active'], null, ['class'=>'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('photo_id', 'Upload a profile photo ')!!}<br>
+                        {!! Form::label('photo_id', 'images')!!}<br>
                         {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
                     </div>
                 </div>

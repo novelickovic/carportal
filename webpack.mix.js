@@ -1,4 +1,6 @@
-let mix = require('laravel-mix');
+//let mix = require('laravel-mix');
+
+let mix = require('laravel-mix').mix;
 
 /*
  |--------------------------------------------------------------------------
@@ -30,9 +32,9 @@ mix.scripts(['resources/assets/custom/plugins/waypoints/lib/jquery.waypoints.min
     'resources/assets/custom/plugins/trumbowyg/trumbowyg.min.js',
     'resources/assets/custom/plugins/trumbowyg/plugins/upload/trumbowyg.upload.js'
 ], 'public/js/admin.js');
-mix.styles(['resources/assets/custom/plugins/trumbowyg/ui/trumbowyg.min.css',
+mix.styles(['resources/assets/custom/plugins/trumbowyg/ui/trumbowyg.min.css'
 ], 'public/css/admin.css');
 mix.styles(['resources/assets/custom/css/bootstrap.min.css',
     'resources/assets/custom/font-awesome/css/font-awesome.min.css',
-    'resources/assets/custom/css/style.css',
+    'resources/assets/custom/css/style.css'
 ], 'public/css/all.css');

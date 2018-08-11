@@ -30,8 +30,7 @@ class CreateCarsTable extends Migration
             $table->integer('price')->unsigned();
             $table->string('interior_color');
             $table->string('exterior_color');
-            $table->integer('photo_id')->unsigned();
-            $table->string('photo_all')->nullable();
+
             $table->string('specification')->nullable();
             $table->integer('active')->unsigned()->default(1);
             $table->string('description');

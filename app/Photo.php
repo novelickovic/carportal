@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Photo extends Model
 {
     //
-    protected $fillable = ['name', 'created_by'];
+    protected $fillable = ['name', 'created_by', 'car_id'];
 
 
     public function owner(){
@@ -19,6 +19,10 @@ class Photo extends Model
     public function getNameAttribute($name){
 
         return '/images/'.$name;
+    }
+
+    public function cars() {
+        return $this->belongsToMany('App\Car');
     }
 
 }

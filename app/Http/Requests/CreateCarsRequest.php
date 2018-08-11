@@ -38,18 +38,18 @@ class CreateCarsRequest extends FormRequest
             'seats'=>'required',
             'interior_color'=>'required',
             'exterior_color'=>'required',
-            'photo_id'=>'required',
             'description'=>'required',
+            'price'=>'required'
 
 
         ];
     }
 
-    public function messages()
-    {
-        return [
-            'photo_id.required' => 'Please upload a thumbnail image for this car.'
-
-        ];
-    }
+//    public function messages()
+//    {
+//        return [
+//            'photo_id.required' => 'Please upload a thumbnail image for this car.'
+//
+//        ];
+//    }
 }

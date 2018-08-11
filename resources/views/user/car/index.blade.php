@@ -60,42 +60,46 @@
                             <th>Year</th>
                             <th>Engine</th>
                             <th>Fuel</th>
-                            <th>Action</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
 
                         </thead>
 
+                        @foreach($cars as $car)
+                            <tbody>
 
-                        <tbody>
-                            @foreach($cars as $car)
                                 <td class="align-middle">{!! $car->id !!}</td>
-                                <td class="align-middle"><img src="{{$car->photo->name}}" alt="" height="50px"></td>
+                                <td class="align-middle">
+
+                                    @if(count($car->photos)>=1)
+                                        <img src="{{$car->photos->first()->name}}" alt="" height="50px">
+                                    @else
+                                        No image
+                                        @endif
+                                </td>
                                 <td class="align-middle">{!! $car->make !!}</td>
                                 <td class="align-middle">{!! $car->model !!}</td>
                                 <td class="align-middle">{!! $car->year !!}</td>
                                 <td class="align-middle">{!! $car->engine !!}</td>
                                 <td class="align-middle">{!! $car->fuel !!}</td>
                                 <td class="align-middle">
-                                    {!! Form::open(['class'=>'form-inline','method'=>'DELETE', 'action'=>['UserCarsController@destroy', $car->id]]) !!}
-
-                                    {{--Preview link--}}
-                                    <a href="{{route('cars.show', $car->id)}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
 
                                     {{--Edit link--}}
-                                    <a href="{{route('cars.edit', $car->id)}}" class="btn btn-primary btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-
-                                    <button class="btn btn-danger btn-sm" value="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
-                                    {!! Form::close() !!}
+                                    <a href="{{route('cars.edit', $car->id)}}" class="btn btn-primary btn-sm mr-1" title="Edit information"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                                    <a href="{{route('cars.edit.images', $car->id )}}" class="btn btn-primary btn-sm mr-1" title="Edit images"><i class="fa fa-image" aria-hidden="true"></i></a>
+                                    {{--Preview link--}}
+                                    {{--<a href="{{route('cars.show', $car->id)}}" class="btn btn-warning btn-sm mr-1" title="Show car"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
 
 
                                 </td>
+                                <td class="align-middle">
+                                    {!! Form::open(['method'=>'DELETE', 'action'=>['UserCarsController@destroy', $car->id]]) !!}
+                                    <button class="btn btn-danger btn-sm" value="submit"><i class="fa fa-trash-o" aria-hidden="true"></i></button>
+                                    {!! Form::close() !!}
+                                </td>
 
-
-
-
-
-
-                                @endforeach
-                        </tbody>
+                            </tbody>
+                        @endforeach
                     </table>
 
 

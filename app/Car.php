@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Car extends Model
 {
     //
@@ -23,8 +24,8 @@ class Car extends Model
         'seats',
         'interior_color',
         'exterior_color',
-        'photo_id',
-        'photo_all',
+
+
         'description',
         'user_id',
         'price',
@@ -33,7 +34,8 @@ class Car extends Model
 
     ];
 
-    public function photo(){
-        return $this->belongsTo('App\Photo');
+    public function photos()
+    {
+        return $this->hasMany('App\Photo');
     }
 }
