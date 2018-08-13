@@ -54,7 +54,7 @@
                     <div class="dropdown-menu dropdown-menu-right profile-dropdown ">
 
                         <!-- item-->
-                        <a href="{{route('users.edit',Auth::user()->id)}}" class="dropdown-item notify-item">
+                        <a href="{{route('profile.index')}}" class="dropdown-item notify-item">
                             <i class="fa fa-user"></i> <span>Profile</span>
                         </a>
 
