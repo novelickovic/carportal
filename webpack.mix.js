@@ -32,6 +32,14 @@ mix.scripts(['resources/assets/custom/plugins/waypoints/lib/jquery.waypoints.min
     'resources/assets/custom/plugins/trumbowyg/trumbowyg.min.js',
     'resources/assets/custom/plugins/trumbowyg/plugins/upload/trumbowyg.upload.js'
 ], 'public/js/admin.js');
+
+mix.scripts(['resources/assets/custom/js/jquery.backstretch.min.js',
+            'resources/assets/custom/js/wow.min.js',
+            'resources/assets/custom/js/retina-1.1.0.min.js',
+            'resources/assets/custom/js/waypoints.min.js',
+            'resources/assets/custom/js/scripts.js'
+], 'public/js/front.js');
+
 mix.styles(['resources/assets/custom/plugins/trumbowyg/ui/trumbowyg.min.css'
 ], 'public/css/admin.css');
 mix.styles(['resources/assets/custom/css/bootstrap.min.css',

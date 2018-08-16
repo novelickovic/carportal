@@ -12,6 +12,9 @@
 */
 
 Route::get('/', function () {
+    return view('welcome3');
+});
+Route::get('/welcome2', function () {
     return view('welcome2');
 });
 
