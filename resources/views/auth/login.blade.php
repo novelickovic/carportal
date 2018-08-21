@@ -1,11 +1,25 @@
-@extends('layouts.app')
+@extends('layouts.interface')
 
-@section('content')
+
+@section('custom_css')
+    <link href="{{asset('css/custom-front.css')}}" rel="stylesheet" type="text/css" />
+    @endsection
+
+
+@section('main_content')
+<div class="top-login">
+</div>
+
+<div class="cd-breadcrumb">
+    <div class="container">
+        <span class="cd-breadcrumb-inactive">Home /</span> Login
+    </div>
+</div>
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
+    <div class="row mt-5 mb-5">
+        <div class="col-md-6 offset-md-3">
             <div class="card">
-                <div class="card-header"><h4>{{ __('Login') }}</h4></div>
+                <div class="card-header"><h4 class="mb-0">{{ __('Login') }}</h4></div>
 
                 <div class="card-body">
                     <div class="clear"></div>
@@ -24,7 +38,7 @@
 
 
 
-                            @endif
+                        @endif
 
                         <div class="row">
                             <div class="col-md-8 offset-md-2">
@@ -41,7 +55,7 @@
                                     @endif
                                 </div>
                             </div>
-                         </div>
+                        </div>
 
 
                         <div class="row">
@@ -77,7 +91,7 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-2">
-                                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                                <button type="submit" class="btn btn-danger btn-block btn-lg">
                                     {{ __('Login') }}
                                 </button>
                                 <div class="clear"></div>
@@ -93,3 +107,7 @@
     </div>
 </div>
 @endsection
+
+@section('scripts')
+    <script src="{{asset('js/custom-front-js.js')}}"></script>
+    @endsection

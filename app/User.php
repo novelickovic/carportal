@@ -57,6 +57,12 @@ class User extends Authenticatable
         }
     }
 
+    public function isUser(){
+        if ($this->role->name == 'user') {
+            return true;
+        }
+    }
+
     public function setPasswordAttribute($password){
         if (!empty($password)){
             $this->attributes['password'] = bcrypt($password);

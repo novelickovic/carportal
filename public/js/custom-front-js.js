@@ -11,15 +11,17 @@ function checkMobile(){
     }
 
     if (win.width() < 800) {
-        $('#nav').addClass('mobile');
+        $('#nav').addClass('mobile-nav');
         $('#nav').removeClass('navbar-no-bg');
         $('#nav').removeClass('sticky');
 
     } else {
-        $('#nav').removeClass('mobile');
+        $('#nav').removeClass('mobile-nav');
     }
 
 };
+
+
 
 $(document).ready(function () {
     checkMobile();//run when page first loads
@@ -31,3 +33,6 @@ $(window).resize(function () {
 $(window).scroll(function () {
     checkMobile();//run on every scroll
 });
+
+
+

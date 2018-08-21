@@ -4,6 +4,7 @@ body {
     font-size: 100%;
     font-weight: 300;
     color: #888;
+    padding-bottom: 0;
     }
 
 strong { font-weight: 500; }
@@ -18,6 +19,78 @@ h3 { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 300; l
 
 img { max-width: 100%; }
 
+.pointer {
+    cursor: pointer;
+}
+.label-no-bott {
+    margin-bottom: 0;
+    font-size: 0.9rem;
+}
+
+.red {
+    color: red;
+}
+
+
+.bot-left {
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+}
+.bot-left:before, .bot-left:after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: -3px;
+}
+
+.bot-left:before {
+    top: -3px;
+    width: 3px;
+    background-image: -webkit-gradient(linear, 0 100%, 0 0, from(#ff391f), to(transparent));
+    background-image: -webkit-linear-gradient(transparent, #ff391f);
+    background-image: -moz-linear-gradient(transparent, #ff391f);
+    background-image: -o-linear-gradient(transparent, #ff391f);
+}
+
+.bot-left:after {
+    right: -3px;
+    height: 3px;
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(#ff391f), to(transparent));
+    background-image: -webkit-linear-gradient(left, #ff391f, transparent);
+    background-image: -moz-linear-gradient(left, #ff391f, transparent);
+    background-image: -o-linear-gradient(left, #ff391f, transparent);
+}
+
+.bot-left-wh {
+    position: relative;
+    display: inline-block;
+    padding-left: 10px;
+}
+.bot-left-wh:before, .bot-left-wh:after {
+    content: "";
+    position: absolute;
+    bottom: 10px;
+    left: -3px;
+}
+
+.bot-left-wh:before {
+    top: -3px;
+    width: 3px;
+    background-image: -webkit-gradient(linear, 0 100%, 0 0, from(white), to(transparent));
+    background-image: -webkit-linear-gradient(transparent, white);
+    background-image: -moz-linear-gradient(transparent, white);
+    background-image: -o-linear-gradient(transparent, white);
+}
+
+.bot-left-wh:after {
+    right: -3px;
+    height: 3px;
+    background-image: -webkit-gradient(linear, 0 0, 100% 0, from(white), to(transparent));
+    background-image: -webkit-linear-gradient(left, white, transparent);
+    background-image: -moz-linear-gradient(left, white, transparent);
+    background-image: -o-linear-gradient(left, white, transparent);
+}
 
 
 /***** Top menu *****/
@@ -69,18 +142,18 @@ ul.navbar-nav li a:focus { color: #A9A9A9; outline: 0; border: 0; }
 .navbar-no-bg ul.navbar-nav li a:focus { color: #ddd; outline: 0; border: 0; }
 
 
-.mobile {
+.mobile-nav {
     background-color: rgba(0,0,0, .9);
     }
-.mobile ul.navbar-nav li a { color: #fff; border: 0; padding-top: 1.2rem}
-.mobile ul.navbar-nav li a:hover { color: #A9A9A9; border: 0; }
-.mobile ul.navbar-nav li a:focus { color: #A9A9A9; outline: 0; border: 0; }
-.mobile .navbar-brand {
+.mobile-nav ul.navbar-nav li a { color: #fff; border: 0; padding-top: 1.2rem}
+.mobile-nav ul.navbar-nav li a:hover { color: #A9A9A9; border: 0; }
+.mobile-nav ul.navbar-nav li a:focus { color: #A9A9A9; outline: 0; border: 0; }
+.mobile-nav .navbar-brand {
     width: 189px;
     background: url("../img/logo2.png") left center no-repeat ;
     height: 44px;
 }
-.mobile .sticky .navbar-brand {
+.mobile-nav .sticky .navbar-brand {
     width: 189px;
     background: url("../img/logo2.png") left center no-repeat ;
     height: 44px;
@@ -161,7 +234,15 @@ ul.navbar-nav li a.btn-link-4:active:focus { outline: 0; opacity: 0.8; color: #f
 @media (max-width: 415px) {}
 
 
-
+/***** Login content *****/
+.top-login {
+    background-image: url("../img/login-topimg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 270px;
+    margin: auto;
+}
 
 /***** Top content *****/
 .top-content {
@@ -192,7 +273,7 @@ ul.navbar-nav li a.btn-link-4:active:focus { outline: 0; opacity: 0.8; color: #f
    font-size: 0.9rem;
 }
 .row .col-md-4 .form-group label {
-    margin-bottom: 0;
+    margin-bottom: 3px;
 
 }
 .adv-search a {
@@ -220,31 +301,365 @@ ul.navbar-nav li a.btn-link-4:active:focus { outline: 0; opacity: 0.8; color: #f
 /***** Features *****/
 
 .features-box {
-    padding-top: 30px;
+    padding: 30px 0;
     text-align: left; }
 .features-box h3 {
-    border-bottom: 3px solid #ff391f ;
-    border-bottom-right-radius: 15px;
-    padding: 8px;
-    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+
+    padding-bottom: 2px;
+
 }
+.features-box .container .card-group .card .card-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.2rem;
+}
+.features-box .container .card-group .card figure {
+    overflow: hidden;
+    margin: 0;
+}
+.features-box .container .card-group .card figure img {
+    position: relative;
+}
+.features-box .container .card-group .card figure .price {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    padding: 5px;
+    background-color: #ff5d48;
+    color: white;
+    display: inline-block;
+    border-radius: 5px;
+    z-index: 20;
+}
+.features-box .container .card-group .card img {
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+
+.features-box .container .card-group .card img{
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+    z-index: 10;
+}
+.features-box .container .card-group .card img:hover {
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
 
 /***** Features *****/
 
 .features-box-red {
-    padding-top: 30px;
+    padding: 30px 0;
     text-align: left;
-    background-color: #ff391f;
-    height: 500px;
+    /*background-color: #ff391f;*/
+    background: url("../img/back2.jpg") center center no-repeat;
+    background-size: cover;
     color: white;
 }
 .features-box-red .container h3 {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    color: white;
+
+    padding-bottom: 3px;
+    display: inline-block;
+}
+.features-box-red .container h4 {
     color: white;
     border-bottom: 3px solid white ;
     border-bottom-right-radius: 15px;
-    padding: 8px;
+    padding-bottom: 2px;
     display: inline-block;
 }
 .features-box-red .container p {
     font-family: 'Montserrat', sans-serif;
+}
+.features-box-red .container .card-deck .card img{
+    object-fit: cover;
+    width: 100%;
+    height: 250px;
+}
+.features-box-red .container .card-deck .card .card-body .card-title {
+    font-family: 'Josefin Sans', sans-serif;
+    color: #ff391f;
+    font-weight: 500;
+    text-transform: uppercase;
+}
+.features-box-red .container .card-deck .card .card-body p {
+    color: #32393e;
+}
+
+/*Search by brand*/
+
+.block {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 20px 20px 20px;
+}
+.search-brand-box {
+    margin-top: 10px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    display: inline-block;
+    float: left;
+    max-height: 200px;
+
+}
+.search-brand-box .item img {
+    -webkit-filter: grayscale(100%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%);
+    -o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
+
+}
+
+.search-brand-box .item img:hover {
+    -webkit-filter: grayscale(0%); /* Safari 6.0 - 9.0 */
+    filter: grayscale(0%);
+    -o-transition: all .6s; -moz-transition: all .6s; -webkit-transition: all .6s; -ms-transition: all .6s; transition: all .6s;
+}
+
+
+/*   Reviews  */
+.review-img {
+    overflow: hidden;
+    margin:0;
+}
+.review-img img{
+    object-fit: cover;
+    width: 100%;
+    height: 300px;
+    position: relative;
+
+
+}
+.review-img .text {
+    position: absolute;
+    top: 200px;
+    left: 20px;
+    width: 100%;
+}
+.review-img .text span {
+    color: white;
+    font-size: 1.8rem;
+    font-family: 'Josefin Sans', sans-serif;
+    letter-spacing: -1px;
+    background: rgb(0, 0, 0); /* fallback color */
+    background: rgba(0, 0, 0, 0.7);
+    padding: 7px;
+    white-space: normal;
+}
+.review-img .text span .spacer {
+    padding:0 5px;
+
+}
+/* image galery fix*/
+#imageGallery {
+    height: auto!important;
+    max-height: 500px;
+    margin:auto!important;
+}
+.lSGallery li a img {
+    height: 70px!important;
+    object-fit: cover;
+
+}
+/*   Footer   */
+footer {
+    background: url("../img/footer-camaro.jpg") center center no-repeat;
+    background-size: cover;
+    color: #b0b0b0;
+    padding: 3rem;
+}
+.footer-title {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: white;
+}
+.popular ul {
+    list-style: none;
+    margin-top: 5px;
+    padding-left: 0;
+}
+.popular ul li {
+    border-bottom: 1px dashed rgba(102,102,102,.3);
+    padding: 3px 0;
+}
+.footer-bottom{
+    background-color: #3f0000;
+    padding: 15px 0;
+    color: #b0b0b0;
+}
+
+.footer-bottom .container a {
+
+}
+.footer-bottom .container a:hover{
+    color: #f2f2f2;
+}
+
+
+/*  Car details  */
+.cd-top-content {
+    background-image: url("../img/cardetails-front.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    margin: auto;
+}
+.cd-breadcrumb {
+    background-color: rgba(255,255,255,.2);
+    margin-top: -60px;
+    padding: 20px 0;
+    z-index: 1;
+    color: whitesmoke;
+}
+.cd-breadcrumb-inactive {
+    color: rgba(255,255,255,.4);
+}
+.cd-top-main-content{
+    padding: 20px;
+}
+.cd-title {
+    color: #32393e;
+    font-size: 2rem;
+}
+.cd-price {
+    color: #ff391f;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.cd-general-title {
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #32393e;
+    font-size: 1.2rem;
+    padding-bottom: 15px;
+
+}
+.cd-general-information ul {
+    padding: 0px;
+    margin: 0px;
+}
+.cd-general-information ul li {
+    display: block;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e3e3e3;
+    margin-bottom: 5px;
+}
+.cd-general-information ul li span{
+    width: 150px;
+    display: inline-block;
+}
+.cd-general-information ul li strong {
+    display: inline-block;
+    text-align: right;
+    color: #363636;
+}
+.cd-description {
+    padding: 0 15px 15px 0 ;
+}
+.equipment .col-md-4 ul {
+    padding: 0;
+    margin: 0;
+}
+.equipment .col-md-4 ul li {
+    list-style: none;
+    padding-right: 5px;
+}
+.equipment .col-md-4 ul li i {
+    color: #ff391f;
+}
+.equipment .col-md-4 .mb-3 strong {
+    padding-bottom: 10px;
+}
+.share-box {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
+}
+.calc-label {
+    padding-top: 5px;
+    width: 150px;
+}
+
+/*  Search  */
+.search-top {
+    background-image: url("../img/search-front.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    margin: auto;
+}
+.search-box {
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    margin-top: 30px;
+
+}
+.search-box .title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-size: 2rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 20px;
+}
+.item-image img {
+    object-fit: cover;
+    width: 100%;
+    height: 180px;
+}
+.item-desc-title {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 10px;
+    font-size: 1.2rem;
+}
+.item-desc-title .item-title {
+    display: inline-block;
+    font-family: 'Josefin Sans', sans-serif;
+    text-transform: uppercase;
+    color: #363636;
+    font-weight: 500;
+}
+.item-desc-title .item-price {
+    color: #ff391f;
+    font-weight: 700;
+    float: right;
+}
+.item-information {
+    padding-top: 15px;
+    overflow: hidden;
+    height: 100px;
+}
+.item-info-box {
+    display: inline-block;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    margin-right: 10px;
+    float: left;
+}
+.item-cardetails {
+    float: right;
+}
+@media (max-width: 767px) {
+    .item-information {
+        padding-top: 15px;
+        overflow: hidden;
+        height: auto;
+        margin-bottom: 15px;
+    }
+
 }

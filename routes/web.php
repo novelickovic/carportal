@@ -18,6 +18,15 @@ Route::get('/welcome2', function () {
     return view('welcome2');
 });
 
+Route::get('/cardetails', function () {
+    return view('cardetails');
+});
+//Route::get('/search', function () {
+//    return view('search');
+//});
+Route::get('/search', 'SearchController@show');
+Route::post('/search', 'SearchController@showResults');
+Route::get('/cardetails/{id}', 'SearchController@showCar')->name('car.show');
 
 
 Auth::routes();
@@ -54,6 +63,8 @@ Route::group(['middleware'=>'author'], function(){
 
 
 
+Route::group(['middleware'=>'user'], function (){
+
     Route::get('/user', function(){
         return view('user.index');
     });
@@ -61,8 +72,6 @@ Route::group(['middleware'=>'author'], function(){
     Route::resource('user/profile', 'UserProfilesController');
 
     Route::resource('user/cars', 'UserCarsController');
-
-    //Route::resource('user/images', 'CarImagesController');
 
     Route::post('user/car/images', 'UserCarsController@storeImages');
 
@@ -73,6 +82,8 @@ Route::group(['middleware'=>'author'], function(){
     })->name('cars.edit.images');
 
     Route::delete('user/car/edit/images/{id}', 'UserCarsController@customDelete');
+
+});
 
 
 

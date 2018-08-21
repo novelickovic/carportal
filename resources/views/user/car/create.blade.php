@@ -112,7 +112,7 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('engine', 'Enter Engine Type') !!}
+                                    {!! Form::label('engine', 'Enter Engine Displacement cm3') !!}
                                     {!! Form::text('engine', null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
