@@ -1,0 +1,6 @@
+[04-Sep-2018 17:22:21 UTC] PHP Warning:  require(/home/z5ik2hdb209x/carportal/vendor/autoload.php): failed to open stream: No such file or directory in /home/z5ik2hdb209x/carportal/artisan on line 18
+[04-Sep-2018 17:22:21 UTC] PHP Fatal error:  require(): Failed opening required '/home/z5ik2hdb209x/carportal/vendor/autoload.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/z5ik2hdb209x/carportal/artisan on line 18
+[04-Sep-2018 17:37:37 UTC] PHP Warning:  require(/home/z5ik2hdb209x/carportal/vendor/autoload.php): failed to open stream: No such file or directory in /home/z5ik2hdb209x/carportal/artisan on line 18
+[04-Sep-2018 17:37:37 UTC] PHP Fatal error:  require(): Failed opening required '/home/z5ik2hdb209x/carportal/vendor/autoload.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/z5ik2hdb209x/carportal/artisan on line 18
+[04-Sep-2018 17:38:37 UTC] PHP Warning:  require(/home/z5ik2hdb209x/carportal/vendor/autoload.php): failed to open stream: No such file or directory in /home/z5ik2hdb209x/carportal/artisan on line 18
+[04-Sep-2018 17:38:37 UTC] PHP Fatal error:  require(): Failed opening required '/home/z5ik2hdb209x/carportal/vendor/autoload.php' (include_path='.:/opt/alt/php72/usr/share/pear') in /home/z5ik2hdb209x/carportal/artisan on line 18

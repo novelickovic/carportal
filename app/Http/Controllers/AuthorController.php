@@ -124,8 +124,9 @@ class AuthorController extends Controller
         $input = $request->all();
         $post = Post::findOrFail($id);
 
-        if (Auth::user()->id !== $post->user_id) {
-
+        if (Auth::user()->id != $post->user_id) {
+		$userid = 'auth user id ='. Auth::user()->id. ' - post user id =' . $post->user->id;
+		dd($userid);
             return redirect('/author')->with('message_error', 'Error! You can update only you posts!');
         }
 
