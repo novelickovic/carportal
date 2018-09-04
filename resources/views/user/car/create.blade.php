@@ -909,7 +909,7 @@
     var carmake_id = $('select[name="make"]').val();
     if(carmake_id) {
     $.ajax({
-    url: '{{url('/models/get/')}}'+carmake_id,
+    url: '{{url('/models/get/')}}'+'/'+ carmake_id,
     type:"GET",
     dataType:"json",
     beforeSend: function(){
