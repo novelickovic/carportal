@@ -133,7 +133,7 @@ class AuthorController extends Controller
         if ($file = $request->file('photo_id')){
 
             //delete old one
-            if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().$post->photo->getOriginal('name'));
+            if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().'/images/'.$post->photo->getOriginal('name'));
             $photo = Photo::findOrFail($post->photo_id);
             $photo->delete();
 
