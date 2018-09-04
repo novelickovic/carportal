@@ -168,7 +168,7 @@ class UserCarsController extends Controller
 
         foreach ($photos as $photo) {
             $photo_to_delete = Photo::find($photo->id);
-            if (file_exists(public_path(). $photo->name)) unlink(public_path(). $photo->name);
+            if (file_exists(public_path().'/images/'. $photo->getOriginal('name'))) unlink(public_path().'/images/'. $photo->getOriginal('name'));
             $photo_to_delete->delete();
         }
 
@@ -182,7 +182,7 @@ class UserCarsController extends Controller
     public function customDelete($id){
 
         $photo_to_delete = Photo::findOrFail($id);
-        if (file_exists(public_path().$photo_to_delete->name)) unlink(public_path(). $photo_to_delete->name);
+        if (file_exists(public_path().'/images/'.$photo_to_delete->getOriginal('name'))) unlink(public_path().'/images/'. $photo_to_delete->getOriginal('name'));
         $photo_to_delete->delete();
 
         return back();

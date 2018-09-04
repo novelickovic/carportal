@@ -86,7 +86,7 @@ class UserProfilesController extends Controller
 
             //check if there is old picture
             if ($user->photo_id) {
-                if (file_exists(public_path().$user->photo->name)) unlink(public_path().$user->photo->name);
+                if (file_exists(public_path().'/images/'.$user->photo->getOriginal('name'))) unlink(public_path().'/images/'.$user->photo->getOriginal('name'));
                 $photo = Photo::findOrFail($user->photo_id);
                 $photo->delete();
             }
