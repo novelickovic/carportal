@@ -18,7 +18,7 @@ class Photo extends Model
 
     public function getNameAttribute($name){
 
-        return '/images/'.$name;
+        return url('/') . '/images/'.$name;
     }
 
     public function cars() {
