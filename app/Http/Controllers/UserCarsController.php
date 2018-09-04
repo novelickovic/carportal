@@ -174,7 +174,7 @@ class UserCarsController extends Controller
 
         $car->delete();
 
-        return redirect('/user/cars')->with('message', 'Car successfuly deleted!');
+        return redirect('/user/cars')->with('message', 'Car successfully deleted!');
 
 
     }
