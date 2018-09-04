@@ -1,6 +1,6 @@
 @if($car->user_id != Auth::user()->id)
     <script>
-        window.location = "/user/cars";</script>
+        window.location = "{{url('/user/cars')}}";</script>
     @endif
 
 @extends('layouts.user')
