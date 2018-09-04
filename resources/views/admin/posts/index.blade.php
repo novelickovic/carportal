@@ -69,7 +69,14 @@
 
                         @foreach($posts as $post)
                             <tr>
-                                <td style="vertical-align: middle"><img class="post-image-style" src="{{$post->photo->name}}" /></td>
+                                <td style="vertical-align: middle">
+                                    @if($post->photo_id)
+                                        <img class="post-image-style" src="{{$post->photo->name}}" />
+                                        @else
+                                            No photo
+                                        @endif
+
+                                </td>
                                 <td>
 
                                     <h5>{{$post->title}}</h5>

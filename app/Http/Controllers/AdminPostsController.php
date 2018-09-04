@@ -117,13 +117,13 @@ class AdminPostsController extends Controller
 
             //Delete old picture
             $oldphoto = Photo::findOrFail($post->photo_id);
-            unlink(public_path(). $oldphoto->name);
+            unlink(public_path().'/images/'. $oldphoto->getOriginal('name'));
             $oldphoto->delete();
 
             //Set new picture
             $name = time().$file->getClientOriginalName();
             $file->move('images/', $name);
-            $photo = Photo::create(['name'=>$name, 'created_by'=>$request->created_by]);
+            $photo = Photo::create(['name'=>$name, 'created_by'=>$request->user_id]);
             $input['photo_id'] = $photo->id;
 
         } else {
@@ -157,7 +157,7 @@ class AdminPostsController extends Controller
         if ($post->photo_id) {
 
             $photo_to_delete = Photo::findOrFail($post->photo_id);
-            unlink(public_path(). $photo_to_delete->name);
+            unlink(public_path().'/images/'. $photo_to_delete->getOriginal('name'));
             $photo_to_delete->delete();
         }
 
