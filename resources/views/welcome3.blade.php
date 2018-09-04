@@ -137,7 +137,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Audi')}}">
-                            <img src="/img/car-logo/Audi-logo.png" alt="Audi" >
+                            <img src="{{url('/img/car-logo/Audi-logo.png')}}" alt="Audi" >
                             </a>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Mercedes')}}">
-                            <img src="/img/car-logo/Mercedes-Benz-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Mercedes-Benz-logo.png')}}" alt="Mercedes" >
                             </a>
                         </div>
                     </div>
@@ -155,7 +155,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Porsche')}}">
-                            <img src="/img/car-logo/Porsche-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Porsche-logo.png')}}" alt="Porsche" >
                             </a>
                         </div>
                     </div>
@@ -164,7 +164,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/BMW')}}">
-                            <img src="/img/car-logo/BMW-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/BMW-logo.png')}}" alt="BMW" >
                             </a>
                         </div>
                     </div>
@@ -173,7 +173,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Alfa-Romeo')}}">
-                            <img src="/img/car-logo/Alfa-Romeo-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Alfa-Romeo-logo.png')}}" alt="Alfa Romeo" >
                             </a>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Fiat')}}">
-                            <img src="/img/car-logo/Fiat-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Fiat-logo.png')}}" alt="Fiat" >
                             </a>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Ford')}}">
-                            <img src="/img/car-logo/Ford-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Ford-logo.png')}}" alt="Ford" >
                             </a>
                         </div>
                     </div>
@@ -200,7 +200,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Honda')}}">
-                            <img src="/img/car-logo/Honda-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Honda-logo.png')}}" alt="Honda" >
                             </a>
                         </div>
                     </div>
@@ -209,7 +209,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Opel')}}">
-                            <img src="/img/car-logo/Opel-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Opel-logo.png')}}" alt="opel" >
                             </a>
                         </div>
                     </div>
@@ -218,7 +218,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Toyota')}}">
-                            <img src="/img/car-logo/Toyota-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Toyota-logo.png')}}" alt="Toyota" >
                             </a>
                         </div>
                     </div>
@@ -227,7 +227,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Volkswagen')}}">
-                            <img src="/img/car-logo/Volkswagen-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Volkswagen-logo.png')}}" alt="Volkswagen" >
                             </a>
                         </div>
                     </div>
@@ -236,7 +236,7 @@
                     <div class="search-brand-box">
                         <div class="item">
                             <a href="{{url('/search/Chevrolet')}}">
-                            <img src="/img/car-logo/Chevrolet-logo.png" alt="" >
+                            <img src="{{url('/img/car-logo/Chevrolet-logo.png')}}" alt="Chevrolet" >
                             </a>
                         </div>
                     </div>
