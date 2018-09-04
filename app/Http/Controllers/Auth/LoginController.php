@@ -53,13 +53,13 @@ class LoginController extends Controller
     protected function authenticated($request, $user){
 
 
-        if(Auth::user()->role->name =='administrator'){
+        if(Auth::user()->role->name =='Administrator'){
             return redirect('/admin');
         }
-        else if (Auth::user()->role->name =='author') {
-            return redirect('/author');
+        else if (Auth::user()->role->name =='Author') {
+            return redirect()->route('author.dashboard', ['id'=>Auth::user()->id]);
         }
-        else if (Auth::user()->role->name == 'user') {
+        else if (Auth::user()->role->name == 'User') {
             return redirect('/user');
         }
         else {

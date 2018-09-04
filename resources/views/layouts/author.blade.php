@@ -6,10 +6,10 @@
 
     <title>Car portal template</title>
     <meta name="description" content="Car portal project devoloped in Laravel">
-    <meta name="author" content="Pike Web Development - https://www.pikephp.com">
+    <meta name="author" content="Novel Web Design">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('/favicon.ico')}}" type="image/x-icon">
 
     <!-- Bootstrap , Font Awesome , Custom css -->
     <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css" />
@@ -32,13 +32,13 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="/author" class="logo"><img alt="Logo" src="/img/logo.png" /> <span>Author</span></a>
+            <a href="{{route('author.dashboard', ['id'=> Auth::user()->id])}}" class="logo"><img alt="Logo" src="{{url('/img/logo.png')}}" /></a>
         </div>
 
         <nav class="navbar-custom">
 
             <ul class="list-inline float-right mb-0">
-                <DIV class="list-inline-item text-white"><h5>Hello, {{Auth::user()->name}}</h5></DIV>
+                <div class="list-inline-item text-white"><h5>Hello, {{Auth::user()->name}}</h5></div>
                 <li class="list-inline-item dropdown notif">
                     <a class="nav-link dropdown-toggle nav-user" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">
 
@@ -47,7 +47,7 @@
                             <img src="{{Auth::user()->photo->name}}" alt="Profile image" class="avatar-rounded">
                         @else
 
-                            <img src="/img/avatars/admin.jpg" alt="Profile image" class="avatar-rounded">
+                            <img src="{{url('/img/avatars/admin.jpg')}}" alt="Profile image" class="avatar-rounded">
                         @endif
                     </a>
 
@@ -96,7 +96,7 @@
                 <ul>
 
                     <li class="submenu">
-                        <a href="/author"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a href="{{route('author.dashboard', Auth::user()->id)}}"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -116,6 +116,16 @@
 
                         </ul>
                         <!-- /.nav-second-level -->
+                    </li>
+
+                    <li class="submenu">
+                        <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="fa fa-power-off"></i> <span>Logout</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
 
 
@@ -153,10 +163,11 @@
 
     <footer class="footer">
 		<span class="text-right">
-		Copyright <a target="_blank" href="#">Your Website</a>
+		© Copyright 2018 Car Portal Developed By
+        <a href="http://www.novelwebdesign.com">Novel Web Design</a>
 		</span>
         <span class="float-right">
-		Powered by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>
+		Dashboard by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>
 		</span>
     </footer>
 

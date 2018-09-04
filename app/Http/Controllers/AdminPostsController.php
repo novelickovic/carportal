@@ -19,7 +19,7 @@ class AdminPostsController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -100,7 +100,7 @@ class AdminPostsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(CreatePostRequest $request, $id)
     {
         //
 

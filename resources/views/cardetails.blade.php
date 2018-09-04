@@ -13,19 +13,20 @@
 
     <div class="cd-breadcrumb">
         <div class="container">
-            <span class="cd-breadcrumb-inactive">Home / Car details /</span> {{$car->make}} {{$car->model}} {{$car->year}}
+            <span class="cd-breadcrumb-inactive">Home / Search /</span> {{$car->make}} {{$car->model}} {{$car->year}}
         </div>
     </div>
-    <div class="cd-top-main-content">
+    <div class="container news-search cd-top-main-content mt-4 mb-4">
         <div class="container">
             <div class="row mb-5">
-                <div class="col-sm-9">
+                <div class="col-sm-8">
                     <div class="cd-title">{{$car->make}} {{$car->model}}</div>
+                    <div class="cd-price pull-right">{{$car->price}} €</div>
+                    <div class="clear"></div>
+                    <i class="fa fa-calendar"></i> {{$car->created_at->diffForHumans()}} | <i class="fa fa-eye"></i> {{$car->view_count}} views
 
                 </div>
-                <div class="col-sm-3">
-                    <div class="cd-price">{{$car->price}} €</div>
-                </div>
+
             </div>
         </div>
 
@@ -50,7 +51,7 @@
                 <br><br>
                 <div class="cd-general-title">Description</div>
                 <div class="cd-description">
-                    {{$car->description}}
+                    {!! nl2br(e($car->description)) !!}
                 </div>
                 <div class="cd-general-title">Equipment</div>
                 <div class="row equipment">
@@ -262,8 +263,8 @@
                     <div class="col-md-4 mb-3">
                         <strong>WINDOWS</strong>
                         <ul>
-                            @if(in_array('Power Windows', $specifications))
-                                <li><i class="fa fa-check"></i> Power Windows</li>
+                            @if(in_array('Power Windows Front', $specifications))
+                                <li><i class="fa fa-check"></i> Power Windows Front</li>
                             @endif
                             @if(in_array('Power Windows Back', $specifications))
                                 <li><i class="fa fa-check"></i> Power Windows Back</li>
@@ -358,7 +359,7 @@
                         <li><span>Fuel</span><strong>{{$car->fuel}}</strong></li>
                         <li><span>Milleage</span><strong>{{$car->mileage}} km</strong></li>
                         <li><span>Engine</span><strong>{{$car->engine}} ccm</strong></li>
-                        <li><span>Horse power</span><strong>{{$car->power}} KW</strong></li>
+                        <li><span>Horse power</span><strong>{{$car->horse_power}} KW</strong></li>
                         <li><span>Transmission</span><strong>{{$car->transmission}}</strong></li>
                         <li><span>Interior color</span><strong>{{$car->interior_color}}</strong></li>
                         <li><span>Exterior color</span><strong>{{$car->exterior_color}}</strong></li>
@@ -530,15 +531,7 @@
 
                     }
                 }
-                // Automatically attempt to restore input fields when the document first loads.
-                window.onload = function() {
-                    // If the browser supports localStorage and we have some stored data
-                    if (window.localStorage && localStorage.loan_amount) {
-                        document.getElementById("amount").value = localStorage.loan_amount;
-                        document.getElementById("apr").value = localStorage.loan_apr;
-                        document.getElementById("years").value = localStorage.loan_years;
-                    }
-                };
+
                 // Pass the user's input to a server-side script which can (in theory) return
                 // a list of links to local lenders interested in making loans. This example
                 // does not actually include a working implementation of such a lender-finding

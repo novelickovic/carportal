@@ -22,7 +22,7 @@ class CreateCarsTable extends Migration
             $table->string('body_type');
             $table->integer('mileage')->unsigned();
             $table->string('fuel');
-            $table->integer('engine')->unsigned();
+            $table->integer('engine');
             $table->string('transmission');
             $table->integer('horse_power')->unsigned();
             $table->string('doors');
@@ -31,11 +31,12 @@ class CreateCarsTable extends Migration
             $table->string('interior_color');
             $table->string('exterior_color');
 
-            $table->string('specification')->nullable();
+            $table->text('specification')->nullable();
             $table->integer('active')->unsigned()->default(1);
             $table->string('description');
 
             $table->string('slug')->nullable();
+            $table->integer('view_count')->default(0);
 
             $table->timestamps();
         });

@@ -9,7 +9,7 @@
     <meta name="author" content="Pike Web Development - https://www.pikephp.com">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('/favicon.ico')}}" type="image/x-icon">
 
     <!-- Bootstrap , Font Awesome , Custom css -->
     <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css" />
@@ -32,7 +32,7 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="admin" class="logo"><img alt="Logo" src="/img/logo.png" /> <span>Admin</span></a>
+            <a href="{{url("/admin")}}" class="logo"><img alt="Logo" src="/img/logo.png" /> </a>
         </div>
 
         <nav class="navbar-custom">
@@ -96,7 +96,7 @@
                 <ul>
 
                     <li class="submenu">
-                        <a class="active" href="/admin"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a href="/admin"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
                     <li class="submenu">
@@ -114,6 +114,15 @@
                     <li class="submenu">
                         <a href="{{route('media.index')}}"><i class="fa fa-fw fa-image"></i> <span> Media </span> </a>
 
+                    </li>
+                    <li class="submenu">
+                        <a href="{{ route('logout') }}" class="dropdown-item notify-item" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            <i class="fa fa-power-off"></i> <span>Logout</span>
+                        </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            @csrf
+                        </form>
                     </li>
 
                 </ul>
@@ -150,10 +159,11 @@
 
     <footer class="footer">
 		<span class="text-right">
-		Copyright <a target="_blank" href="#">Your Website</a>
+		© Copyright 2018 Car Portal Developed By
+        <a href="http://www.novelwebdesign.com">Novel Web Design</a>
 		</span>
         <span class="float-right">
-		Powered by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>
+		Dashboard by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>
 		</span>
     </footer>
 

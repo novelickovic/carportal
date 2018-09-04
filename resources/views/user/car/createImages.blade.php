@@ -60,7 +60,7 @@
             <div class="card">
                 <div class="card-header">
                     <h3>Add photos</h3>
-                    Attach only images | Max 6 images |
+                    Attach only images | Max 6 images | Max File Size : 2Mb
                 </div>
                 <div class="card-body mt-3">
 
@@ -73,7 +73,7 @@
 
                 </div>
                 <div class="card-footer">
-                    <a href="{{route('cars.index')}}" class="btn btn-lg btn-primary pull rounded-right">Save and publish</a>
+                    <a href="{{route('cars.index')}}" class="btn btn-lg btn-primary pull rounded-right"><i class="fa fa-save"></i> Save and publish</a>
                 </div>
             </div>
         </div>
@@ -105,7 +105,6 @@
             maxFilesize: 2, // MB
             maxFiles: 6,
             acceptedFiles : "image/*",
-            addRemoveLinks : true,
 
 
 

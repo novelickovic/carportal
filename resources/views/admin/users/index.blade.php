@@ -41,7 +41,9 @@
     <div class="row">
         <div class="col-sm-5">
             <div class="card mb-3">
-                <div class="card-header"><h3><i class="fa fa-user-plus"></i> Create a new user</h3></div>
+                <div class="card-header"><h3><i class="fa fa-user-plus"></i> Create a new user</h3>
+                    Directly create new user
+                </div>
                 <div class="card-body">
 
                     {{--Displaying errors--}}
@@ -78,7 +80,7 @@
                         {!! Form::select('is_active',[''=>'Chosse option', 0=>'Inactive',1 =>'Active'], null, ['class'=>'form-control']) !!}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('photo_id', 'images')!!}<br>
+                        {!! Form::label('photo_id', 'Photo')!!}<br>
                         {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
                     </div>
                 </div>
@@ -86,7 +88,8 @@
                     <div class="form-group">
                         {!! Form::hidden('created_by', Auth::user()->id) !!}
 
-                        {!! Form::submit('Create user', ['class'=>'btn btn-primary pull-right']) !!}
+
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> Create user</button>
                     </div>
 
                     {!! Form::close() !!}
@@ -95,7 +98,9 @@
         </div>
         <div class="col-sm-7">
             <div class="card mb-3">
-                <div class="card-header"><h3><i class="fa fa-users"></i> All users</h3></div>
+                <div class="card-header"><h3><i class="fa fa-users"></i> All users</h3>
+                    Administrators, Authors and Registred Users
+                </div>
                 <div class="card-body">
 
                     <table class="table table-hover">

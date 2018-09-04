@@ -68,20 +68,20 @@
                         <div class="row">
                             <div class="col-sm-4">
                                 <div class="form-group ">
-                                {!! Form::label('make', 'Enter make') !!}
-                                {!! Form::text('make', null,['class'=>'form-control']) !!}
+                                {!! Form::label('make', 'Select make') !!}
+                                {!! Form::select('make',[''=>'Choose']+ $makes, null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('model', 'Enter Model of your car') !!}
-                                    {!! Form::text('model', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('model', 'Select Model') !!}  <div id="loader" style="display: inline-block; visibility: hidden"><i class="fa fa-spinner fa-spin"></i></div>
+                                    {!! Form::select('model',[''=>'Choose'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('year', 'Enter Manufacture Year') !!}
-                                    {!! Form::number('year', null,['class'=>'form-control', 'min'=>'1900', 'max'=>'2018', 'placeholder'=>'Year']) !!}
+                                    {!! Form::label('year', 'Select Manufacture Year') !!}
+                                    {!! Form::select('year',[''=>'Choose','2018'=>'2018','2017'=>'2017','2016'=>'2016','2015'=>'2015','2014'=>'2014','2013'=>'2013','2012'=>'2012','2011'=>'2011','2010'=>'2010','2009'=>'2009','2008'=>'2008','2007'=>'2007','2006'=>'2006','2005'=>'2005','2004'=>'2004','2003'=>'2003','2002'=>'2002','2001'=>'2001','2000'=>'2009','199'=>'1999','1998'=>'1998','1997'=>'1997','1996'=>'1996','1995'=>'1995','1994'=>'1994','1993'=>'1993','1992'=>'1992','1991'=>'1991','1990'=>'1990','1989'=>'1989','1988'=>'1988','1987'=>'1987','1986'=>'1986','1985'=>'1985','1984'=>'1984','1983'=>'1983','1982'=>'1982','1981'=>'1981','1980'=>'1980','1979'=>'1979','1978'=>'1978','1977'=>'1977','1976'=>'1976','1975'=>'1975','1974'=>'1974','1973'=>'1973','1972'=>'1972','1971'=>'1971','1970'=>'1970','1969'=>'1969','1968'=>'1968','1967'=>'1967','1966'=>'1966','1965'=>'1965'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="col-sm-4">
@@ -98,22 +98,30 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('body_type', 'Select Body Typ') !!}
-                                    {!! Form::text('body_type', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('body_type', 'Select Body Type') !!}
+                                    {!! Form::select('body_type',[''=>'Choose','Sedan'=>'Sedan','Wagon'=>'Wagon','SUV'=>'SUV','Hatchback'=>'Hatchback','Coupe/Cabriolet'=>'Coupe/Cabriolet','Supercar/Sport'=>'Supercar/Sport', 'Pickup'=>'Pickup'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
                             <div class="clearfix"></div>
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('fuel', 'Enter Fuel Type') !!}
-                                    {!! Form::text('fuel', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('fuel', 'Select Fuel Type') !!}
+                                    {!! Form::select('fuel',[''=>'Choose','Gasoline'=>'Gasoline','Diesel'=>'Diesel','LPG'=>'LPG','CNG'=>'CNG','Electric car'=>'Electric car','Hybrid'=>'Hybrid'] ,null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('engine', 'Enter Engine Displacement cm3') !!}
-                                    {!! Form::text('engine', null,['class'=>'form-control']) !!}
+                                    <div class="form-group">
+                                        {!! Form::label('engine', 'Enter Engine Displacement') !!}
+                                        <div class="input-group mb-3">
+                                            {!! Form::number('engine', null,['class'=>'form-control', 'max'=>'10000']) !!}
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">ccm</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
 
@@ -131,36 +139,36 @@
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('transmission', 'Enter Transmission Type') !!}
-                                    {!! Form::text('transmission', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('transmission', 'Select Transmission Type') !!}
+                                    {!! Form::select('transmission',[''=>'Choose','Automatic'=>'Automatic','Manual'=>'Manual'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('doors', 'Enter Doors Count') !!}
-                                    {!! Form::text('doors', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('doors', 'Select Doors Count') !!}
+                                    {!! Form::select('doors',[''=>'Choose','2/3'=>'2/3','4/5'=>'4/5'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('seats', 'Enter Seats Count') !!}
-                                    {!! Form::text('seats', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('seats', 'Select Seats Count') !!}
+                                    {!! Form::select('seats',[''=>'Choose','2'=>'2','3'=>'3','4'=>'4','5'=>'5','6'=>'6','7'=>'7'] ,null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('interior_color', 'Enter Interior Color') !!}
-                                    {!! Form::text('interior_color', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('interior_color', 'Select Interior Color') !!}
+                                    {!! Form::select('interior_color',[''=>'Choose','Black'=>'Black','Grey'=>'Grey','White'=>'White','Beige'=>'Beige','Blue'=>'Blue','Red'=>'Red','Brown'=>'Brown','Other'=>'Other'] ,null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
                             <div class="col-sm-4">
                                 <div class="form-group">
-                                    {!! Form::label('exterior_color', 'Enter Exterior Color') !!}
-                                    {!! Form::text('exterior_color', null,['class'=>'form-control']) !!}
+                                    {!! Form::label('exterior_color', 'Select Exterior Color') !!}
+                                    {!! Form::select('exterior_color',[''=>'Choose','Black'=>'Black','Silver'=>'Silver','White'=>'White','Red'=>'Red','Blue'=>'Blue','Brown'=>'Brown','Orange'=>'Orange','Green'=>'Green','Purple'=>'Purple','Pink'=>'Pink','Other'=>'Other'], null,['class'=>'form-control']) !!}
                                 </div>
                             </div>
 
@@ -674,7 +682,7 @@
                             <div class="form-check pretty p-default p-round p-smooth p-bigger">
                                 {!! Form::checkbox('spec[]', 'Power Windows Front') !!}
                                 <div class="state p-primary">
-                                    {!! Form::label('spec', 'Power Windows') !!}
+                                    {!! Form::label('spec', 'Power Windows Front') !!}
                                 </div>
                             </div>
                         </div>
@@ -878,7 +886,9 @@
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-body">
-                    {!! Form::submit('Save information and continue', ['class'=>'btn btn-primary btn-lg pull-right']) !!}
+
+                    <button type="submit" class="btn btn-primary btn-lg pull-right"><i class="fa fa-save"></i> Save information and continue</button>
+                    {{--{!! Form::submit('Save information and continue', ['class'=>'btn btn-primary btn-lg pull-right']) !!}--}}
                 </div>
             </div>
         </div>
@@ -894,7 +904,51 @@
 
 
 @section('scripts')
+    <script>
+    function checkModel() {
+    var carmake_id = $('select[name="make"]').val();
+    if(carmake_id) {
+    $.ajax({
+    url: '/models/get/'+carmake_id,
+    type:"GET",
+    dataType:"json",
+    beforeSend: function(){
+    $('#loader').css("visibility", "visible");
+    },
 
+    success:function(data) {
+    $('select[name="model"]').empty();
+
+    $('select[name="model"]').append('<option value="">Choose</option>');
+
+    $.each(data, function(key, value){
+
+    $('select[name="model"]').append('<option value="'+ value +'">' + value + '</option>');
+
+    });
+    },
+    complete: function(){
+    $('#loader').css("visibility", "hidden");
+    }
+    });
+    }
+    }
+
+
+    $(document).ready(function() {
+        @if(count($errors)>0)
+        checkModel();
+        @endif
+    //        setModel();
+
+    $('select[name="make"]').on('change', function(){
+    checkModel();
+
+    });
+
+
+    });
+    </script>
     @endsection
 
 @section('scripts_data')

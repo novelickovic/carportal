@@ -153,7 +153,6 @@
             maxFilesize: 2, // MB
             maxFiles: {{6 - $count}},
             acceptedFiles : "image/*",
-            addRemoveLinks : true,
 
 
 

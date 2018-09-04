@@ -25,6 +25,7 @@ class CreatePostsTable extends Migration
             $table->string('tags');
             $table->string('meta_title');
             $table->string('meta_description');
+            $table->integer('view_count')->default(0);
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

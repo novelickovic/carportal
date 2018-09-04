@@ -40,9 +40,11 @@
 
     <div class="row">
 
-        <div class="col-sm-7">
+        <div class="col-sm-8">
             <div class="card mb-3">
-                <div class="card-header"><h3><i class="fa fa-picture-o"></i> All pictures</h3></div>
+                <div class="card-header"><h3><i class="fa fa-picture-o"></i> All pictures</h3>
+                Images created by administrators, authors and users
+                </div>
                 <div class="card-body">
 
                     <table class="table table-hover">
@@ -62,7 +64,7 @@
 
                             <tr>
                                 <td>{{$photo->id}}</td>
-                                <td><img src="{{$photo->name}}" alt="" class="img-fluid" width="50"></td>
+                                <td><img src="{{$photo->name}}" alt="" class="img-fluid" width="150"></td>
                                 <td>@if($photo->created_by)
 
                                         @if(\App\User::find($photo->created_by))
@@ -85,6 +87,13 @@
                         @endforeach
                         </tbody>
                     </table>
+
+
+                    <div class="row">
+                        <div class="col-sm-4 offsed-md-5">
+                            {{$photos->links()}}
+                        </div>
+                    </div>
 
 
 

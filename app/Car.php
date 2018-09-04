@@ -3,11 +3,13 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 
 class Car extends Model
 {
     //
+    use Sluggable;
 
     protected $fillable = [
 
@@ -27,8 +29,18 @@ class Car extends Model
         'description',
         'user_id',
         'price',
-        'specification'
+        'specification',
+        'view_count'
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => ['make','model','year','fuel','transmission','mileage']
+            ]
+        ];
+    }
 
     public function user() {
         return $this->belongsTo('App\User');

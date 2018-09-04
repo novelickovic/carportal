@@ -48,7 +48,6 @@
 
                     <span class="pull-right"><a href="{{route('author.create')}}" class="btn btn-primary btn-sm"><i class="fa fa-plus" aria-hidden="true"></i> Add new post</a></span>
 
-                    <span class="pull-right"><a href="{{route('author.show', Auth::user()->id)}}" class="btn btn-primary btn-sm mr-2"><i class="fa fa-file-text-o" aria-hidden="true"></i> My posts</a></span>
 
                     <h3><i class="fa fa-file-text-o"></i> All posts</h3>
                 </div>
@@ -63,6 +62,7 @@
                             <th>Thumbnail</th>
                             <th>Post details</th>
                             <th>Category</th>
+                            <th>Views</th>
                             <th>Status</th>
                             <th>Actions</th>
                         </tr>
@@ -76,12 +76,14 @@
                                 <td>
 
                                     <h5>{{$post->title}}</h5>
-                                    Posted by <b>{{$post->user->name}}</b>, {{$post->updated_at->diffForHumans()}}<br />
+                                    Posted by <b>{{$post->user->name}}</b>, {{$post->created_at->diffForHumans()}}<br />
 
                                     <small>{!! str_limit(strip_tags($post->body), 100, ' &raquo &raquo &raquo') !!}</small>
                                 </td>
 
                                 <td>{{$post->category->name}}</td>
+
+                                <td>{{$post->view_count}}</td>
 
                                 <td>{!! Form::open(['method'=>'PATCH', 'action'=>['AuthorController@update', $post->id]]) !!}
                                     @if($post->status == 1)
@@ -99,7 +101,17 @@
                                     {!! Form::open(['class'=>'form-inline','method'=>'DELETE', 'action'=>['AuthorController@destroy', $post->id]]) !!}
 
                                     {{--Preview link--}}
-                                    <a href="{{route('author.show', $post->id)}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
+                                    @if($post->category_id == 1)
+                                        <a href="{{url("/news/$post->slug")}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                                    @else
+                                        <a href="{{url("/reviews/$post->slug")}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+
+                                    @endif
+
+
+                                    {{--<a href="{{route('author.show', $post->id)}}" class="btn btn-warning btn-sm mr-1"><i class="fa fa-eye" aria-hidden="true"></i></a>--}}
 
                                     {{--Edit link--}}
                                     <a href="{{route('author.edit', $post->id)}}" class="btn btn-primary btn-sm mr-1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
@@ -112,6 +124,15 @@
 
                         </tbody>
                     </table>
+
+
+
+                    <div class="row">
+                        <div class="col-sm-3 mx-auto mt-4">
+                            {{$posts->links()}}
+                        </div>
+                    </div>
+
 
 
 
@@ -130,4 +151,9 @@
 
 
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('/js/admin.js')}}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 @endsection

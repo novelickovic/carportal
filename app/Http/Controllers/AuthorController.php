@@ -3,10 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Http\Requests\CreatePostRequest;
 use App\Photo;
 use App\Post;
 use App\Role;
 use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,7 +22,7 @@ class AuthorController extends Controller
     public function index()
     {
         //
-        $posts = Post::all();
+        $posts = Post::where('user_id', Auth::user()->id)->orderBy('created_at', 'desc')->paginate(5);
         return view('author.index', compact('posts'));
     }
 
@@ -43,7 +45,7 @@ class AuthorController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreatePostRequest $request)
     {
         //
         $input = $request->all();
@@ -82,7 +84,7 @@ class AuthorController extends Controller
 
 
 
-        $posts = Post::all()->where('user_id', $id);
+        $posts = Post::where('user_id', $id)->orderBy('created_at', 'desc')->get()->paginate(5);
 
         return view('author.index', compact('posts'));
     }
@@ -188,12 +190,15 @@ class AuthorController extends Controller
 
     public function showProfile($id){
 
-        $user = User::findOrFail($id);
+        if ($id == Auth::user()->id) {
+            $user = User::findOrFail($id);
 
-        $role = array(Auth::user()->role->id=>Auth::user()->role->name);
+            $role = array(Auth::user()->role->id=>Auth::user()->role->name);
 
-        return view('author.profile', compact('user', 'role'));
+            return view('author.profile', compact('user', 'role'));
+        }
 
+        return redirect()->back()->with('message_error','Restricted access');
     }
 
     public function updateProfile(Request $request, $id){
@@ -223,6 +228,45 @@ class AuthorController extends Controller
         return back()->with('message', 'Information successfuly updated!');
 
 
+    }
+
+    public function dashboard($id) {
+
+        if ($id == Auth::user()->id) {
+            $posts = Post::where('user_id', $id)->get();
+            $post_today = count(Post::where('user_id', $id)->where('created_at','>=',Carbon::today())->get());
+            $news_count = count(Post::where('user_id', $id)->where('category_id',1)->get());
+            $reviews_count = count(Post::where('user_id', $id)->where('category_id',2)->get());
+            $news_today = count(Post::where('user_id', $id)->where('category_id',1)->where('created_at','>=',Carbon::today())->get());
+            $reviews_today = count(Post::where('user_id', $id)->where('category_id',2)->where('created_at',Carbon::today())->get());
+
+
+            $res=Post::where('user_id',Auth::user()->id)->orderBy('created_at','asc')->get();
+            $res=$res->groupBy(function($val) {
+                return Carbon::parse($val->created_at)->format('M');
+            });
+
+            $news_active=count(Post::where('user_id', Auth::user()->id)->where('category_id',1)->where('status',1)->get());
+            $news_inactive=count(Post::where('user_id', Auth::user()->id)->where('category_id',1)->where('status',0)->get());
+
+            $reviews_active=count(Post::where('user_id', Auth::user()->id)->where('category_id',2)->where('status',1)->get());
+            $reviews_inactive=count(Post::where('user_id', Auth::user()->id)->where('category_id',2)->where('status',0)->get());
+
+
+
+
+
+
+
+            return view('author.dashboard', compact('posts', 'post_today', 'news_today','reviews_today',
+                'news_count','reviews_count', 'total','res', 'news_active','news_inactive','reviews_active','reviews_inactive'));
+
+
+
+
+
+        }
+        return redirect()->back()->with('message_error','Restricted access');
     }
 
 

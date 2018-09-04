@@ -22,7 +22,7 @@ class User
                 return $next($request);
             }
 
-            return redirect('/login')->with('message', 'You must be logged in as registered user!');
+            return redirect('/home')->with('status', 'role');
         }
 
         return redirect('/login')->with('message', 'Please log in or register new account');

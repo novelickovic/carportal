@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Car;
+use App\Carmake;
+use App\Carmodel;
 use App\Http\Requests\CreateCarsRequest;
 use App\Photo;
 use function Composer\Autoload\includeFile;
@@ -20,8 +22,10 @@ class UserCarsController extends Controller
     {
         //
         $cars = Car::all()->where('user_id', Auth::user()->id);
-
         return view('user.car.index', compact('cars'));
+
+
+
     }
 
     /**
@@ -32,8 +36,14 @@ class UserCarsController extends Controller
     public function create()
     {
         //
+        $cars = Car::where('user_id', Auth::user()->id)->get();
+        if (count($cars)>=1) {
+            return redirect('/user')->with('message_error','You cant add more cars!');
 
-        return view('user.car.create');
+        }
+
+        $makes= Carmake::pluck('name','name')->all();
+        return view('user.car.create', compact('makes'));
     }
 
     /**
@@ -87,6 +97,8 @@ class UserCarsController extends Controller
     public function show($id)
     {
         //
+        $car = Car::findOrFail($id);
+        return view('cardetails', compact('car'));
     }
 
     /**
@@ -103,7 +115,11 @@ class UserCarsController extends Controller
 
         $spec = explode(',' ,$car->specification);
 
-        return view('user.car.edit', compact('car', 'spec'));
+        $makes= Carmake::pluck('name','name')->all();
+
+        $carmodels = Carmodel::where('carmake_name', $car->make)->pluck('name', 'name')->all();
+
+        return view('user.car.edit', compact('car', 'spec','makes','carmodels'));
     }
 
     /**

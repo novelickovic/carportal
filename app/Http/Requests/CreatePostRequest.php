@@ -31,7 +31,8 @@ class CreatePostRequest extends FormRequest
             'tags'=>'required',
             'status'=>'required',
             'meta_title'=>'required',
-            'meta_description' =>'required'
+            'meta_description' =>'required',
+            'photo_id'=>'required'
         ];
     }
 

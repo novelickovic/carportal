@@ -120,15 +120,16 @@
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('photo_id', 'images')!!}<br>
+                        {!! Form::label('photo_id', 'Profile image')!!}<br>
                         {!! Form::file('photo_id', null, ['class'=>'form-control']) !!}
                     </div>
                 </div>
                 <div class="card-footer">
                     <div class="form-group">
                         {!! Form::hidden('created_by', Auth::user()->id) !!}
-                        {!! Form::submit('Update information', ['class'=>'btn btn-primary pull-right']) !!}
-                        <a href="{{route('profile.index')}}" class="mr-2 btn btn-danger pull-right">Cancel</a>
+
+                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-refresh"></i> Update informations</button>
+
                     </div>
 
                     {!! Form::close() !!}

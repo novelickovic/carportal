@@ -36,8 +36,6 @@
                                 </div>
                             </div>
 
-
-
                         @endif
 
                         <div class="row">

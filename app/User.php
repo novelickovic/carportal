@@ -40,7 +40,7 @@ class User extends Authenticatable
 
     public function isAdmin(){
 
-        if ($this->role->name == "administrator") {
+        if ($this->role->name == "Administrator") {
 
             return true;
         }
@@ -51,14 +51,14 @@ class User extends Authenticatable
 
     public function isAuthor(){
 
-        if ($this->role->name == 'author') {
+        if ($this->role->name == 'Author') {
 
             return true;
         }
     }
 
     public function isUser(){
-        if ($this->role->name == 'user') {
+        if ($this->role->name == 'User') {
             return true;
         }
     }

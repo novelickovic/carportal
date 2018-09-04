@@ -11,22 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome3');
-});
-Route::get('/welcome2', function () {
-    return view('welcome2');
-});
 
-Route::get('/cardetails', function () {
-    return view('cardetails');
-});
-//Route::get('/search', function () {
-//    return view('search');
-//});
+use App\Car;
+use App\User;
+use Illuminate\Support\Facades\Auth;
+
+Route::get('/', 'InterfaceController@homePage');
+
 Route::get('/search', 'SearchController@show');
 Route::post('/search', 'SearchController@showResults');
+Route::get('/search/{id}', 'SearchController@showMakes');
 Route::get('/cardetails/{id}', 'SearchController@showCar')->name('car.show');
+Route::get('/models/get/{id}', 'SearchController@getCarmodels');
+Route::get('/news', 'NewsReviewsController@allNews');
+Route::get('/news/{id}', 'NewsReviewsController@showNews')->name('news.show');
+Route::post('/news/search', 'NewsReviewsController@searchNews')->name('news.search');
+Route::get('/reviews', 'NewsReviewsController@allReviews')->name('reviews.show');
+Route::get('/reviews/{id}', 'NewsReviewsController@showReview');
+Route::post('/reviews/search', 'NewsReviewsController@searchReviews')->name('reviews.search');
+Route::get('/reviews/tags/{tag}', 'NewsReviewsController@showReviewsTagsResults');
+Route::get('/news/tags/{tag}', 'NewsReviewsController@showNewsTagsResults');
+
+
 
 
 Auth::routes();
@@ -36,9 +42,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware'=>'admin'], function (){
 
-    Route::get('/admin', function (){
-        return view('admin.index');
-    })->name('admin.index');
+    Route::get('/admin', 'AdminController@index')->name('admin.index');
+
     Route::resource('admin/users', 'AdminUsersController', ['except'=>['create', 'show']]);
 
     Route::resource('admin/categories', 'AdminCategoriesController', ['except' =>['create', 'show']]);
@@ -53,6 +58,8 @@ Route::group(['middleware'=>'author'], function(){
 
     Route::resource('/author', 'AuthorController');
 
+    Route::get('/author/dashboard/{id}', 'AuthorController@dashboard')->name('author.dashboard');
+
     Route::get('/author/showprofile/{id}', 'AuthorController@showProfile')->name('author.showprofile');
 
     Route::patch('/author/updateprofile/{id}', 'AuthorController@updateProfile')->name('author.updateprofile');
@@ -65,9 +72,7 @@ Route::group(['middleware'=>'author'], function(){
 
 Route::group(['middleware'=>'user'], function (){
 
-    Route::get('/user', function(){
-        return view('user.index');
-    });
+    Route::get('/user', 'UserController@index');
 
     Route::resource('user/profile', 'UserProfilesController');
 

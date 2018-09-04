@@ -9,7 +9,7 @@
     <meta name="author" content="Pike Web Development - https://www.pikephp.com">
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="{{url('/favicon.ico')}}" type="image/x-icon">
 
     <!-- Bootstrap , Font Awesome , Custom css -->
     <link href="{{asset('css/all.css')}}" rel="stylesheet" type="text/css" />
@@ -36,35 +36,35 @@
 <!--    Navigation  -->
 <nav class="navbar navbar-expand-md fixed-top navbar-no-bg" id="nav">
     <div class="container">
-        <a href="#" class="navbar-brand"></a>
+        <a href='{{url("/")}}' class="navbar-brand"></a>
         <button class="navbar-toggler float-right" type="button" data-toggle="collapse" data-target="#navbar9">
             <span class="navbar-toggler-icon"><i class="fa fa-navicon"></i></span>
         </button>
         <div class="navbar-collapse collapse" id="navbar9">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Home</a>
+                    <a class="nav-link" href="{{url("/")}}">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="//codeply.com">Buy a car</a>
+                    <a class="nav-link" href="{{url("/search")}}">Buy a car</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Sell a car</a>
+                    <a class="nav-link" href="{{url("/user")}}">Sell a car</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">News</a>
+                    <a class="nav-link" href={{url("/news")}}>News</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Rewievs</a>
+                    <a class="nav-link" href="{{url("/reviews")}}">Reviews</a>
                 </li>
                 <li>
                     @if (Route::has('login'))
                         @auth
-                        @if(Auth::user()->role->name == 'user')
+                        @if(Auth::user()->role->name == 'User')
 
                             <a class="btn btn-link-4" href="/user">Go to dashboard</a>
 
-                        @elseif((Auth::user()->role->name == 'author'))
+                        @elseif((Auth::user()->role->name == 'Author'))
 
                             <a class="btn btn-link-4" href="/author">Go to dashboard</a>
 
@@ -104,18 +104,22 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-3">
-                <img src="/img/logo2.png" alt="">
+                <img src="{{url('/img/logo2.png')}}" alt="" class="mb-5">
             </div>
             <div class="col-sm-3">
                 <div class="footer-title mb-4">Most popular on the site</div>
                 <div class="popular">
                     <ul>
-                        <li><i class="fa fa-caret-right"></i> Ford Mondeo</li>
-                        <li><i class="fa fa-caret-right"></i> Volkswagen Golf 4</li>
-                        <li><i class="fa fa-caret-right"></i> Chevrolet Camaro</li>
-                        <li><i class="fa fa-caret-right"></i> Audi A4
-                        <li><i class="fa fa-caret-right"></i> BMW X5</li>
-                        <li><i class="fa fa-caret-right"></i> Fiat 500</li>
+                        @php
+                            $popularCars = App\Car::orderBy('view_count','desc')->limit(6)->get();
+
+
+                        @endphp
+
+
+                        @foreach($popularCars as $popularCar)
+                            <li><i class="fa fa-caret-right"></i><a href="{{route('car.show', $popularCar->slug)}}"> {{$popularCar->make}} {{$popularCar->model}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -123,8 +127,8 @@
                 <div class="footer-title mb-4">Our partners</div>
                 <div class="popular">
                     <ul>
-                        <li><i class="fa fa-caret-right"></i> novelwebdesign.com</li>
-                        <li><i class="fa fa-caret-right"></i> bioeliksir.com</li>
+                        <li><i class="fa fa-caret-right"></i> <a href="http://www.novelwebdesign.com">novelwebdesign.com</a></li>
+                        <li><i class="fa fa-caret-right"></i> <a href="http://www.bioeliksir.com">bioeliksir.com</a></li>
 
                     </ul>
                 </div>
@@ -169,10 +173,11 @@
     <div class="container">
 
         © Copyright 2018 Car Portal Developed By
-        <a href="#">Novel Web Design</a>
+        <a href="http://www.novelwebdesign.com">Novel Web Design</a>
     </div>
 
 </div>
+
 
 
 

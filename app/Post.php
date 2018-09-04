@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Cviebrock\EloquentSluggable\Sluggable;
-
+use Laravel\Scout\Searchable;
 
 class Post extends Model
 {
@@ -19,10 +19,26 @@ class Post extends Model
         'tags',
         'status',
         'meta_title',
-        'meta_description'
+        'meta_description',
+        'view_count'
     ];
 
     use Sluggable;
+    use Searchable;
+
+
+
+
+    public function toSearchableArray()
+    {
+        $array = $this->toArray();
+
+        // Customize array...
+
+        return $array;
+    }
+
+
 
     /**
      * Return the sluggable configuration array for this model.

@@ -53,13 +53,17 @@
                 <div class="card-body">
                     <table class="table table-hover">
                         <thead>
-                            <th>Id</th>
+
                             <th>Photo</th>
                             <th>Make</th>
+                            <th>Price</th>
                             <th>Model</th>
                             <th>Year</th>
                             <th>Engine</th>
+                            <th>Horse power
+                            <th>Mileage</th>
                             <th>Fuel</th>
+                            <th>View</th>
                             <th>Edit</th>
                             <th>Delete</th>
 
@@ -68,7 +72,7 @@
                         @foreach($cars as $car)
                             <tbody>
 
-                                <td class="align-middle">{!! $car->id !!}</td>
+
                                 <td class="align-middle">
 
                                     @if(count($car->photos)>=1)
@@ -79,9 +83,16 @@
                                 </td>
                                 <td class="align-middle">{!! $car->make !!}</td>
                                 <td class="align-middle">{!! $car->model !!}</td>
+                                <td class="align-middle">{!! $car->price !!} €</td>
                                 <td class="align-middle">{!! $car->year !!}</td>
-                                <td class="align-middle">{!! $car->engine !!}</td>
+                                <td class="align-middle">{!! $car->engine !!} ccm</td>
+                                <td class="align-middle">{!! $car->horse_power !!} HP</td>
+                                <td class="align-middle">{!! $car->mileage !!} km</td>
                                 <td class="align-middle">{!! $car->fuel !!}</td>
+                                <td class="align-middle">
+                                    <a href="{{route('cars.show', $car->id)}}" class="btn btn-warning btn-sm mr-1" title="View"><i class="fa fa-eye" aria-hidden="true"></i></a>
+
+                                </td>
                                 <td class="align-middle">
 
                                     {{--Edit link--}}
@@ -100,7 +111,14 @@
 
                             </tbody>
                         @endforeach
+
+
                     </table>
+
+                    @if(count($cars) == 0)
+                        <div class="alert alert-info mt-5">No cars in listing</div>
+
+                    @endif
 
 
 

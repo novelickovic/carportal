@@ -117,7 +117,8 @@
                                 <div class="card-footer">
                                     <div class="form-group">
                                         {!! Form::hidden('created_by', Auth::user()->id) !!}
-                                        {!! Form::submit('Create post', ['class'=>'btn btn-primary pull-right']) !!}
+
+                                        <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-plus-circle"></i> Create post</button>
                                         {!! Form::close() !!}
                                     </div>
                                 </div>

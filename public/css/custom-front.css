@@ -26,9 +26,12 @@ img { max-width: 100%; }
     margin-bottom: 0;
     font-size: 0.9rem;
 }
-
 .red {
     color: red;
+}
+#loader {
+    visibility: hidden;
+    display: inline-block;
 }
 
 
@@ -353,6 +356,20 @@ ul.navbar-nav li a.btn-link-4:active:focus { outline: 0; opacity: 0.8; color: #f
     transform: scale(1.3);
 }
 
+.img-cont {
+    overflow: hidden;
+}
+.img-cont img {
+    -webkit-transform: scale(1);
+    transform: scale(1);
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+.img-cont img:hover{
+    -webkit-transform: scale(1.3);
+    transform: scale(1.3);
+}
+
 
 /***** Features *****/
 
@@ -493,6 +510,12 @@ footer {
     border-bottom: 1px dashed rgba(102,102,102,.3);
     padding: 3px 0;
 }
+.popular ul li a {
+    color: #b0b0b0;
+}
+.popular ul li a:hover {
+    color: #ff391f;
+}
 .footer-bottom{
     background-color: #3f0000;
     padding: 15px 0;
@@ -532,6 +555,7 @@ footer {
 .cd-title {
     color: #32393e;
     font-size: 2rem;
+    display: inline-block;
 }
 .cd-price {
     color: #ff391f;
@@ -568,7 +592,7 @@ footer {
     color: #363636;
 }
 .cd-description {
-    padding: 0 15px 15px 0 ;
+    padding: 0 15px 25px 0 ;
 }
 .equipment .col-md-4 ul {
     padding: 0;
@@ -605,7 +629,7 @@ footer {
 .search-box {
     border: 1px solid rgba(0, 0, 0, 0.1);
     padding: 15px;
-    margin-top: 30px;
+    background-color: white;
 
 }
 .search-box .title {
@@ -662,4 +686,163 @@ footer {
         margin-bottom: 15px;
     }
 
+}
+
+.cn-top-content {
+    background-image: url("../img/carnews.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    margin: auto;
+}
+.cn-box {
+    margin-bottom: 15px;
+    padding: 15px;
+
+}
+.news-pic img {
+    object-fit: cover;
+    width: 100%;
+    height: 200px;
+}
+.news-title a{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: #363636;
+}
+.news-title a:hover, .news-title a:focus {
+    color: #ff391f;
+}
+.news-info {
+    font-family: 'Raleway', sans-serif;
+    padding-bottom: 20px;
+}
+.news-read-more a {
+    text-transform: uppercase;
+    float: right;
+    font-weight: 500;
+    padding-top: 10px;
+}
+.news-search {
+    padding: 15px;
+}
+.news-box, .news-search {
+    padding: 15px;
+    border: 1px solid rgba(0,0,0, 0.1);
+    border-radius: 5px;
+    background-color: white;
+}
+.news-search .title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    padding-bottom: 2px;
+    font-size: 1.4rem;
+}
+.search-button {
+    padding: 9px 12px;
+    border: 1px solid #e1e6eb;
+    border-left: none;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
+    cursor: pointer;
+}
+.search-button:hover {
+    background-color: red;
+    color: whitesmoke;
+}
+.form-search {
+    border-bottom: 1px solid #e1e6eb ;
+    border-top: 1px solid #e1e6eb ;
+    border-left: 1px solid #e1e6eb;
+    border-right: none;
+    box-shadow: none;
+    height: 44px;
+    font-size: 0.9rem;
+    line-height: 20px;
+    padding: 9px 12px;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.tags-list ul{
+    list-style: none;
+    padding: 0;
+}
+.tags-list ul li {
+    display: inline-block;
+    margin-right: 5 px;
+    margin-bottom: 15px;
+
+}
+.tags-list ul li a {
+    color: white;
+    border: 1px solid #ff391f;
+    background-color: #ff391f;
+    padding: 5px 10px;
+
+
+}
+.tags-list ul li a:hover{
+    color: red;
+    background-color: white;
+
+}
+.mp-box {
+    display: table;
+}
+.mp-img {
+    display: table-cell;
+    vertical-align: middle;
+    margin-right: 10px;
+    width: 80px;
+    height: 60px
+}
+.mp-img img{
+    object-fit: cover;
+    width: 80px;
+    height: 60px
+}
+.mp-content {
+    padding-left: 8px;
+    display: table-cell;
+    vertical-align: top;
+    font-size: 0.9rem;
+}
+.mp-content a {
+    color: #363636;
+    font-weight: 500;
+}
+.mp-content a:hover {
+    color: red;
+    font-weight: 500;
+}
+.one-news-title {
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.4rem;
+    color: #363636;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+.one-news-info {
+    padding-bottom: 30px;
+}
+.one-news-body h3{
+    font-family: 'Josefin Sans', sans-serif;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 1.1rem;
+    color: #363636;
+    padding-bottom: 10px;
+}
+.carreview-top {
+    background-image: url("../img/carreview.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 250px;
+    margin: auto;
 }
