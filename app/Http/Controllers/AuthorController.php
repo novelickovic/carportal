@@ -171,7 +171,7 @@ class AuthorController extends Controller
 
             // check if there is any images attached to post
             if ($post->photo_id) {
-                if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().$post->photo->getOriginal('name'));
+                if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().'/images/' .$post->photo->getOriginal('name'));
 
                 $photo = Photo::findOrFail($post->photo_id);
                 $photo->delete();
