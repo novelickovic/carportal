@@ -133,7 +133,7 @@ class AuthorController extends Controller
         if ($file = $request->file('photo_id')){
 
             //delete old one
-            if (file_exists(public_path(). $post->photo->name)) unlink(public_path().$post->photo->name);
+            if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().$post->photo->getOriginal('name'));
             $photo = Photo::findOrFail($post->photo_id);
             $photo->delete();
 
@@ -171,7 +171,7 @@ class AuthorController extends Controller
 
             // check if there is any images attached to post
             if ($post->photo_id) {
-                if (file_exists(public_path().$post->photo->name)) unlink(public_path(). $post->photo->name);
+                if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().$post->photo->getOriginal('name'));
 
                 $photo = Photo::findOrFail($post->photo_id);
                 $photo->delete();
@@ -210,7 +210,7 @@ class AuthorController extends Controller
         if ($file = $request->file('photo_id')){
 
             if ($old_picture = $user->photo_id) {
-                if (file_exists(public_path(). $user->photo->name)) unlink(public_path(). $user->photo->name);
+                if (file_exists(public_path().'/images/' .$post->photo->getOriginal('name'))) unlink(public_path().$post->photo->getOriginal('name'));
                 $photo = Photo::findOrFail($old_picture);
                 $photo->delete();
             }

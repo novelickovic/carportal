@@ -96,7 +96,7 @@
                 <ul>
 
                     <li class="submenu">
-                        <a href="/admin"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
+                        <a href="{{url('/admin')}}"><i class="fa fa-fw fa-bars"></i><span> Dashboard </span> </a>
                     </li>
 
                     <li class="submenu">
