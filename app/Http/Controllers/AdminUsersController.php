@@ -113,7 +113,11 @@ class AdminUsersController extends Controller
 
             // Check and delete old image
             if ($user->photo) {
-                unlink(public_path() .'/images/'. $user->photo->getOriginal('name'));
+
+
+                $oldphoto = Photo::findOrFail($user->photo_id);
+                unlink(public_path().'/images/'. $oldphoto->getOriginal('name'));
+                $oldphoto->delete();
             }
 
             // set new image
