@@ -32,7 +32,7 @@
 
         <!-- LOGO -->
         <div class="headerbar-left">
-            <a href="{{url('/user')}}" class="logo"><img alt="Logo" src="/img/logo.png" /></a>
+            <a href="{{url('/user')}}" class="logo"><img alt="Logo" src="{{url('/img/logo.png')}}" /></a>
         </div>
 
         <nav class="navbar-custom">
@@ -47,7 +47,7 @@
                             <img src="{{Auth::user()->photo->name}}" alt="Profile image" class="avatar-rounded">
                         @else
 
-                            <img src="/img/avatars/admin.jpg" alt="Profile image" class="avatar-rounded">
+                            <img src="{{url('/img/avatars/admin.jpg')}}" alt="Profile image" class="avatar-rounded">
                         @endif
                     </a>
 

@@ -62,14 +62,14 @@
                         @auth
                         @if(Auth::user()->role->name == 'User')
 
-                            <a class="btn btn-link-4" href="/user">Go to dashboard</a>
+                            <a class="btn btn-link-4" href="{{url('/user')}}">Go to dashboard</a>
 
                         @elseif((Auth::user()->role->name == 'Author'))
 
-                            <a class="btn btn-link-4" href="/author">Go to dashboard</a>
+                            <a class="btn btn-link-4" href="{{url('/author')}}">Go to dashboard</a>
 
                         @else
-                            <a class="btn btn-link-4" href="/admin">Go to dashboard</a>
+                            <a class="btn btn-link-4" href="{{url('/admin')}}">Go to dashboard</a>
                         @endif
 
                     @else

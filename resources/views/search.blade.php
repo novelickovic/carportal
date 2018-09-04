@@ -162,7 +162,7 @@
                             {!! Form::close() !!}
                         </div>
                         <div class="col-md-3">
-                            <img src="/img/carsearch.png" alt="" class="img-fluid d-none d-md-block">
+                            <img src="{{url('/img/carsearch.png')}}" alt="" class="img-fluid d-none d-md-block">
                         </div>
                     </div>
 
@@ -241,7 +241,7 @@
                     @if(count($cars) !== 0)
                         <div class="col-md-3">
                             <div class="search-box">
-                                <img src="/img/carads.png" alt="" class="img-fluid">
+                                <img src="{{url('/img/carads.png')}}" alt="" class="img-fluid">
                             </div>
                         </div>
                     @endif
