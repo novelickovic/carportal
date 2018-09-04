@@ -1,4 +1,4 @@
-@if($car->user_id!==Auth::user()->id)
+@if($car->user_id!=Auth::user()->id)
     <script>
     window.location = "/user/cars";</script>
     @endif

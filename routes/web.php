@@ -78,6 +78,8 @@ Route::group(['middleware'=>'user'], function (){
 
     Route::resource('user/cars', 'UserCarsController');
 
+
+
     Route::post('user/car/images', 'UserCarsController@storeImages');
 
     Route::get('user/car/edit/images/{car_id}', function ($car_id){
