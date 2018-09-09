@@ -33,7 +33,7 @@ class CreateCarsTable extends Migration
 
             $table->text('specification')->nullable();
             $table->integer('active')->unsigned()->default(1);
-            $table->string('description');
+            $table->text('description');
 
             $table->string('slug')->nullable();
             $table->integer('view_count')->default(0);
