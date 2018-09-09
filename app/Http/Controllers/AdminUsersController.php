@@ -45,24 +45,26 @@ class AdminUsersController extends Controller
     {
         //
 
+        ///////////////////////////////////////////////////////////////////////////////
+//        $input = $request->all();
+//
+//        if ($file = $request->file('photo_id')){
+//
+//            $name = time(). $file->getClientOriginalName();
+//
+//            $file->move('images/', $name);
+//
+//            $photo = Photo::create(['name'=>$name, 'created_by'=>$request->created_by]);
+//
+//            $input['photo_id']= $photo->id;
+//        }
+//
+//        User::create($input);
+//
+//        return back()->with('message', 'Well done ! User has been succesful created !');
+        ///////////////////////////////////////////////////////////////////////////////
 
-        $input = $request->all();
-
-        if ($file = $request->file('photo_id')){
-
-            $name = time(). $file->getClientOriginalName();
-
-            $file->move('images/', $name);
-
-            $photo = Photo::create(['name'=>$name, 'created_by'=>$request->created_by]);
-
-            $input['photo_id']= $photo->id;
-        }
-
-        User::create($input);
-
-        return back()->with('message', 'Well done ! User has been succesful created !');
-
+        return back()->with('message', 'In admin demo mode you can`t create users!');
 
 
 
@@ -102,34 +104,35 @@ class AdminUsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $user= User::findOrFail($id);
+        ///////////////////////////////////////////////////////////////////////////////
+//
+//        $user= User::findOrFail($id);
+//
+//        $input = $request->all();
+//
+//        if ($file = $request->file('photo_id')){
+//
+//            // Check and delete old image
+//            if ($user->photo) {
+//
+//                $oldphoto = Photo::findOrFail($user->photo_id);
+//                unlink(public_path().'/images/'. $oldphoto->getOriginal('name'));
+//                $oldphoto->delete();
+//            }
+//
+//            // set new image
+//            $name = time(). $file->getClientOriginalName();
+//            $file->move('images/', $name);
+//            $photo = Photo::create(['name'=>$name, 'created_by'=>$input['created_by']]);
+//            $input['photo_id']= $photo->id;
+//        }
+//
+//        $user->update($input);
+//
+//        return redirect('/admin/users')->with('message', 'User status has been updated');
+        ///////////////////////////////////////////////////////////////////////////////
 
-        $input = $request->all();
-
-
-
-        if ($file = $request->file('photo_id')){
-
-            // Check and delete old image
-            if ($user->photo) {
-
-
-                $oldphoto = Photo::findOrFail($user->photo_id);
-                unlink(public_path().'/images/'. $oldphoto->getOriginal('name'));
-                $oldphoto->delete();
-            }
-
-            // set new image
-            $name = time(). $file->getClientOriginalName();
-            $file->move('images/', $name);
-            $photo = Photo::create(['name'=>$name, 'created_by'=>$input['created_by']]);
-            $input['photo_id']= $photo->id;
-        }
-
-        $user->update($input);
-
-        return redirect('/admin/users')->with('message', 'User status has been updated');
+        return back()->with('message', 'In admin demo mode you can`t edit users!');
 
     }
 
@@ -141,22 +144,26 @@ class AdminUsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        ///////////////////////////////////////////////////////////////////////////////
+//
+//
+//        $user = User::findOrFail($id);
+//
+//        if ($user->id == Auth::user()->id) {
+//            return redirect('/admin/users')->with('message_error', 'You can not delete youself!');
+//        }
+//        if ($user->photo_id) {
+//
+//            unlink(public_path().'/images/'. $user->photo->getOriginal('name'));
+//            Photo::findOrFail($user->photo_id)->delete();
+//
+//        }
+//        $user->delete();
+//
+//        return redirect('/admin/users')->with('message', 'User has been deleted');
+        ///////////////////////////////////////////////////////////////////////////////
+        return back()->with('message', 'In admin demo mode you can`t delete users!');
 
-        $user = User::findOrFail($id);
-
-        if ($user->id == Auth::user()->id) {
-            return redirect('/admin/users')->with('message_error', 'You can not delete youself!');
-        }
-        if ($user->photo_id) {
-
-            unlink(public_path().'/images/'. $user->photo->getOriginal('name'));
-            Photo::findOrFail($user->photo_id)->delete();
-
-        }
-        $user->delete();
-
-        return redirect('/admin/users')->with('message', 'User has been deleted');
 
     }
 }

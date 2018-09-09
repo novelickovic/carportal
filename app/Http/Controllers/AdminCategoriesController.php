@@ -39,11 +39,15 @@ class AdminCategoriesController extends Controller
     public function store(CreateCategoryRequest $request)
     {
         //
-        $category = $request->all();
 
-        Category::create($category);
+        // working case
+        //$category = $request->all();
+        //Category::create($category);
+        //return back()->with('message', 'Well done! New category created!');
 
-        return back()->with('message', 'Well done! New category created!');
+
+        //demo
+        return back()->with('message', 'In admin demo mode you cant create categories!');
     }
 
     /**
@@ -65,9 +69,12 @@ class AdminCategoriesController extends Controller
      */
     public function edit($id)
     {
-        //
-        $category = Category::findOrFail($id);
-        return view('admin.categories.edit', compact('category'));
+        //working case
+        //$category = Category::findOrFail($id);
+        //return view('admin.categories.edit', compact('category'));
+
+
+        return back()->with('message', 'In admin demo mode you can`t edit categories!');
     }
 
     /**
@@ -79,12 +86,13 @@ class AdminCategoriesController extends Controller
      */
     public function update(CreateCategoryRequest $request, $id)
     {
-        $category = Category::findOrFail($id);
 
-        $category->update($request->all());
+        //$category = Category::findOrFail($id);
+        //$category->update($request->all());
+        //return redirect('/admin/categories')->with('message', 'Category name successful updated!');
 
-        return redirect('/admin/categories')->with('message', 'Category name successful updated!');
 
+        return back()->with('message', 'In admin demo mode you can`t edit categories!');
     }
 
     /**
@@ -96,8 +104,9 @@ class AdminCategoriesController extends Controller
     public function destroy($id)
     {
         //
-        Category::findOrFail($id)->delete();
+        //Category::findOrFail($id)->delete();
+        //return redirect('/admin/categories')->with('message', 'Category successful deleted!');
+        return back()->with('message', 'In admin demo mode you can`t delete categories!');
 
-        return redirect('/admin/categories')->with('message', 'Category successful deleted!');
     }
 }

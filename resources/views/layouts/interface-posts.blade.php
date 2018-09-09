@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Title -->
-    <title>Car portal template</title>
+    @yield('title')
+
     <!-- Description -->
-    <meta name="description" content="Car portal project devoloped in Laravel">
+    @yield('description')
 
     <meta name="author" content="Novica Velickovic">
 

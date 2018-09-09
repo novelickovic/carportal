@@ -83,16 +83,14 @@ class AdminMediasController extends Controller
     public function destroy($id)
     {
         //
-        $photo = Photo::findOrFail($id);
+//        $photo = Photo::findOrFail($id);
+//        if (file_exists(public_path(). $photo->name)) {
+//            unlink(public_path(). $photo->name);
+//        }
+//        $photo->delete();
+//        return redirect('/admin/media')->with('message', 'Photo has been deleted!');
 
-        if (file_exists(public_path(). $photo->name)) {
-            unlink(public_path(). $photo->name);
-        }
-
-        $photo->delete();
-
-        return redirect('/admin/media')->with('message', 'Photo has been deleted!');
-
+        return back()->with('message', 'In admin demo mode you can`t delete images!');
 
     }
 }

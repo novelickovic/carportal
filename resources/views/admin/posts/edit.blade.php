@@ -22,6 +22,25 @@
     </div>
     <!-- end row -->
 
+    @if(session('message'))
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-success">
+                    <h4 class="alert-heading">{{session('message')}}</h4>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if(session('message_error'))
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="alert alert-danger">
+                    <h4 class="alert-heading">{{session('message_error')}}</h4>
+                </div>
+            </div>
+        </div>
+    @endif
 
     <div class="row">
 

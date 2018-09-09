@@ -38,7 +38,7 @@ class UserCarsController extends Controller
         //
         $cars = Car::where('user_id', Auth::user()->id)->get();
         if (count($cars)>=1) {
-            return redirect('/user')->with('message_error','You cant add more cars!');
+            return redirect('/user')->with('message_error','You can`t add more cars!');
 
         }
 

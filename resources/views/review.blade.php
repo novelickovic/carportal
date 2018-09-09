@@ -1,4 +1,10 @@
-@extends('layouts.interface')
+@extends('layouts.interface-posts')
+@section('title')
+    <title>{{$review->meta_title}}</title>
+@endsection
+@section('description')
+    <meta name="description" content="{{$review->meta_description}}">
+@endsection
 
 @section('custom_css')
     <link href="{{asset('css/custom-front.css')}}" rel="stylesheet" type="text/css" />
