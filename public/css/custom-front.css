@@ -19,6 +19,14 @@ h3 { font-family: 'Montserrat', sans-serif; font-size: 32px; font-weight: 300; l
 
 img { max-width: 100%; }
 
+/* Links color */
+.page-item.active .page-link {
+    z-index: 1;
+    color: #fff;
+    background-color: #ff5d48;
+    border-color: #ff5d48;
+}
+
 .pointer {
     cursor: pointer;
 }
