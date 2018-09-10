@@ -236,6 +236,8 @@
                             </div>
                         </div>
                     @endforeach
+                    <div class="mt-4">{{$cars->links()}}</div>
+
 
                     </div>
                     @if(count($cars) !== 0)
