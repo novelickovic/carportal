@@ -22,7 +22,7 @@ class SearchController extends Controller
         $makes = Carmake::pluck('name', 'name')->all();
 
         $newmake = str_replace("-"," ", $id);
-        $cars = Car::makes($newmake)->get();
+        $cars = Car::makes($newmake)->paginate(10);
 
         $input['make']=$newmake;
         $carmodels = Carmodel::where('carmake_name', $input['make'])->pluck('name', 'name')->all();

@@ -238,7 +238,9 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="mt-4">{{$cars->appends($_GET)->links()}}</div>
+                    <div class="mt-4">
+                        {{$cars->appends($_GET)->links()}}
+                    </div>
 
 
                     </div>
