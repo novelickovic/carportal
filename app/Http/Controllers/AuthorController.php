@@ -239,7 +239,7 @@ class AuthorController extends Controller
             $news_count = count(Post::where('user_id', $id)->where('category_id',1)->get());
             $reviews_count = count(Post::where('user_id', $id)->where('category_id',2)->get());
             $news_today = count(Post::where('user_id', $id)->where('category_id',1)->where('created_at','>=',Carbon::today())->get());
-            $reviews_today = count(Post::where('user_id', $id)->where('category_id',2)->where('created_at',Carbon::today())->get());
+            $reviews_today = count(Post::where('user_id', $id)->where('category_id',2)->where('created_at','>=',Carbon::today())->get());
 
 
             $res=Post::where('user_id',Auth::user()->id)->orderBy('created_at','asc')->get();
