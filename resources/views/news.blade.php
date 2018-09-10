@@ -39,7 +39,7 @@
 
                     </div>
                     @endforeach
-                    <div class="mt-4">{{$news->links()}}</div>
+                    <div class="mt-4">{{ $news->links() }}</div>
 
             </div>
 

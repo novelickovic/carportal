@@ -24,8 +24,8 @@ class NewsReviewsController extends Controller
     }
     public function allNews() {
 
-        $news = Post::where('category_id','1')->orderBy('id','desc')->get();
-        $popular = Post::where('category_id','1')->orderBy('view_count','desc')->limit(2)->paginate(10);
+        $news = Post::where('category_id','1')->orderBy('id','desc')->paginate(10);
+        $popular = Post::where('category_id','1')->orderBy('view_count','desc')->limit(2)->get();
         return view('news', compact('news', 'popular'));
     }
 
