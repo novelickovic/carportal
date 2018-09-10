@@ -206,7 +206,9 @@
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="item-image">
-                                                <img src="{{$car->photos->first()->name}}" alt="" class="img-fluid">
+                                                <a href="{{route('car.show', $car->slug)}}">
+                                                    <img src="{{$car->photos->first()->name}}" alt="" class="img-fluid">
+                                                </a>
                                             </div>
                                         </div>
                                         <div class="col-md-8">
