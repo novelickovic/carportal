@@ -14,7 +14,7 @@
 
                 <div class="card">
                     <h3 class="mb-2">Looking for a car?</h3>
-                    {!! Form::open(['method'=>'POST', 'action'=>'SearchController@showResults']) !!}
+                    {!! Form::open(['method'=>'GET', 'action'=>'SearchController@showResults']) !!}
                     <div class="row">
                         <div class="col-md-4">
                             <div class="form-group">

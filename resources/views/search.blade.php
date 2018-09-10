@@ -27,9 +27,9 @@
                             if (!isset($carmodels)) $carmodels =[''=>'Choose'];
                             @endphp
                             @if(isset($input))
-                            {!! Form::model($input, ['method'=>'POST', 'action'=>'SearchController@showResults']) !!}
+                            {!! Form::model($input, ['method'=>'GET', 'action'=>'SearchController@showResults']) !!}
                             @else
-                                {!! Form::open(['method'=>'POST', 'action'=>'SearchController@showResults']) !!}
+                                {!! Form::open(['method'=>'GET', 'action'=>'SearchController@showResults']) !!}
                             @endif
                             <div class="row">
                                 <div class="col-md-4">
@@ -236,7 +236,7 @@
                             </div>
                         </div>
                     @endforeach
-                    <div class="mt-4">{{$cars->links()}}</div>
+                    <div class="mt-4">{{$cars->appends($_GET)->links()}}</div>
 
 
                     </div>

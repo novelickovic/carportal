@@ -45,7 +45,9 @@ class SearchController extends Controller
         $cars = Car::makes($input['make'])->models($input['model'])->years($input['min_year'], $input['max_year'])
             ->mileages($input['min_mileage'], $input['max_mileage'])->bodies($input['body'])
             ->engines($input['min_engine'], $input['max_engine'])->powers($input['min_power'],$input['max_power'])
-            ->orderBy('created_at','desc')->paginate(10);
+            ->orderBy('created_at','desc')->paginate(2);
+
+
 
 
 

@@ -19,7 +19,8 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', 'InterfaceController@homePage');
 
 Route::get('/search', 'SearchController@show');
-Route::post('/search', 'SearchController@showResults');
+//Route::post('/search', 'SearchController@showResults');
+Route::get('/search/results', 'SearchController@showResults');
 Route::get('/search/{id}', 'SearchController@showMakes');
 Route::get('/cardetails/{id}', 'SearchController@showCar')->name('car.show');
 Route::get('/models/get/{id}', 'SearchController@getCarmodels');
@@ -77,8 +78,6 @@ Route::group(['middleware'=>'user'], function (){
     Route::resource('user/profile', 'UserProfilesController');
 
     Route::resource('user/cars', 'UserCarsController');
-
-
 
     Route::post('user/car/images', 'UserCarsController@storeImages');
 
